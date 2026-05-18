@@ -7,10 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Dynamic Typewriter Effect for Hero Subtitle
     const typewriterElement = document.getElementById('typewriter');
     const words = [
-        "Aeronautical Engineer",
-        "UAV Autonomy Architect",
-        "Embedded Systems Engineer",
-        "Aerospace AI Specialist"
+        "Aeronautical Engineer"
     ];
     let wordIndex = 0;
     let charIndex = 0;
@@ -32,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle word switching and delays
         if (!isDeleting && charIndex === currentWord.length) {
+            if (words.length === 1) {
+                // Keep the cursor blinking but stop typing loop
+                return;
+            }
             isDeleting = true;
             delay = 2000; // Pause at full word
         } else if (isDeleting && charIndex === 0) {
