@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Dynamic Typewriter Effect for Hero Subtitle
     const typewriterElement = document.getElementById('typewriter');
     const words = [
+        "Aeronautical Engineer",
         "UAV Autonomy Architect",
         "Embedded Systems Engineer",
-        "Aerospace AI Specialist",
-        "Robotics Systems Builder"
+        "Aerospace AI Specialist"
     ];
     let wordIndex = 0;
     let charIndex = 0;
