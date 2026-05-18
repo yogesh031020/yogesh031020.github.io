@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yogesh E S | Aeronautical Engineer Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: #0f172a;
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: var(--text);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h3 {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .date {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        p, ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .skill-item strong {
+            color: var(--text);
+        }
+        @media print {
+            body { padding: 0; background: #fff; color: #000; }
+            .resume-container { border: none; box-shadow: none; padding: 0; background: #fff; }
+            h1, h2, h3, .subtitle, .date, .contact-info a { color: #000 !important; }
+            p, ul, li, .contact-info { color: #333 !important; }
+            .resume-container { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header>
+            <h1>YOGESH E S</h1>
+            <div class="subtitle">Aeronautical Engineer</div>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:yogeshes376@gmail.com">yogeshes376@gmail.com</a></span>
+                <span>🌐 <a href="https://yogesh031020.github.io/" target="_blank">yogesh031020.github.io</a></span>
+                <span>💻 <a href="https://github.com/yogesh031020" target="_blank">github.com/yogesh031020</a></span>
+            </div>
+        </header>
+
+        <section>
+            <h2>Professional Profile</h2>
+            <p>
+                High-performance Aeronautical Engineer with 2+ years of industry experience specializing in UAV Autonomy, custom flight controller development, ROS 2 integration, and PX4/ArduPilot diagnostics. Proven track record of architecting failure-resilient embedded flight stacks, swarm intelligence protocols, and visual-inertial odometry setups for defense and commercial platforms.
+            </p>
+        </section>
+
+        <section>
+            <h2>Core Technical Matrix</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <strong>Aerospace & Avionics:</strong> PX4/ArduPilot HAL Porting, ESP32-S3 Custom Controllers, APM 2.8, SITL
+                </div>
+                <div class="skill-item">
+                    <strong>Autonomy & Middleware:</strong> ROS 2 (Humble, Jazzy), Micro-XRCE-DDS, Zenoh Router, MAVLink
+                </div>
+                <div class="skill-item">
+                    <strong>Programming & Systems:</strong> C++17/20, Python, C, Linux Shell, Docker Containerization
+                </div>
+                <div class="skill-item">
+                    <strong>Perception & FEA:</strong> ORB-SLAM3, OpenCV, Open3D/PCL, Gazebo Harmonic, OpenVSP CAD, PrePoMax FEA
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Industrial Experience</h2>
+            <h3>
+                <span>Novatech Robo Pvt Ltd — UAV Systems & Flight Operations Engineer</span>
+                <span class="date">June 2024 — Present</span>
+            </h3>
+            <ul>
+                <li>Led flight operations and field diagnostics for 20+ multirotor aircraft payloads.</li>
+                <li>Designed telemetry parsing pipelines evaluating flight sensor states (IMU vibs, EKF residuals) to optimize battery cycles and rotor vibration bounds by 25%.</li>
+                <li>Directed strict flight checklists and payload delivery SOPs ensuring safe operation under strict mission bounds.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Flagship Portfolio Projects</h2>
+            
+            <h3>AeroCore-S3 Flight Controller</h3>
+            <p>Designed and built a custom ESP32-S3 based flight controller from the hardware level. Ported ArduPilot hardware abstraction layer interface mappings for SPI, I2C, and UART channels to interface MPU6000 and MS5611 sensors, and successfully validated EKF3 state estimation during flight testing.</p>
+
+            <h3>Project-TRINITY: Decentralized Swarm Engine</h3>
+            <p>Developed a lightweight C++ boids coordination library operating inside localized ROS 2 namespaces. Integrated Eclipse Zenoh to handle inter-agent state updates, cutting network telemetry overhead by 40% compared to pure ROS 2 DDS, with real-time cooperative grid-merging visualizer in RViz.</p>
+
+            <h3>Project-ODYSSEY: GPS-Denied 3D Vision Autonomy</h3>
+            <p>Configured an Error-State Kalman Filter (ES-EKF) node fusing high-frequency IMU telemetry with stereo-camera features. Engineered an Octomap voxel grid visual node generating 3D local maps on-the-fly for path planners.</p>
+
+            <h3>AEGIS Trinity Stack: Failure-Resilient Autonomy</h3>
+            <p>Built an independent daemon running 50Hz diagnostic evaluations on critical hardware components. Authored strict, rule-based failsafe state machines executing RTL maneuvers during critical battery or telemetry drop conditions.</p>
+
+            <h3>Project-ARGUS: Structural Integrity & Fatigue Auditing</h3>
+            <p>Developed a structural crack growth estimator implementing Paris-Erdogan law models for UAV carbon plates. Coded FEA pre-processing loops evaluating carbon stress patches to maximize compliance under heavy aerodynamics.</p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <h3>
+                <span>Bachelor of Engineering in Aeronautical Engineering</span>
+                <span class="date">Graduated</span>
+            </h3>
+            <p>Core Focus: Aerodynamics, UAV Design, Structural Mechanics, Propulsion Systems.</p>
+        </section>
+    </div>
+</body>
+</html>
