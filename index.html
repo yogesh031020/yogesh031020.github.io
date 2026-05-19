@@ -75,42 +75,115 @@
                     <svg class="drone-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="droneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#38bdf8" />
-                                <stop offset="100%" stop-color="#818cf8" />
+                                <stop offset="0%" stop-color="#00d2ff" />
+                                <stop offset="100%" stop-color="#6366f1" />
                             </linearGradient>
                             <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
-                                <feGaussianBlur stdDeviation="8" result="blur" />
+                                <feGaussianBlur stdDeviation="6" result="blur" />
                                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
                         </defs>
-                        <!-- Central Body -->
-                        <path d="M250,200 L300,250 L250,300 L200,250 Z" fill="none" stroke="url(#droneGrad)" stroke-width="4" filter="url(#neonGlow)"/>
-                        <circle cx="250" cy="250" r="15" fill="#38bdf8" filter="url(#neonGlow)"/>
-                        <!-- Arms -->
-                        <line x1="215" y1="215" x2="130" y2="130" stroke="url(#droneGrad)" stroke-width="3" opacity="0.8"/>
-                        <line x1="285" y1="215" x2="370" y2="130" stroke="url(#droneGrad)" stroke-width="3" opacity="0.8"/>
-                        <line x1="215" y1="285" x2="130" y2="370" stroke="url(#droneGrad)" stroke-width="3" opacity="0.8"/>
-                        <line x1="285" y1="285" x2="370" y2="370" stroke="url(#droneGrad)" stroke-width="3" opacity="0.8"/>
-                        <!-- Propellers (Animated in CSS) -->
-                        <g class="propeller" transform="translate(130, 130)">
-                            <ellipse cx="0" cy="0" rx="40" ry="10" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
-                            <circle cx="0" cy="0" r="4" fill="#fff"/>
+                        
+                        <!-- ================= DUAL-SPAR TRUSS ARMS ================= -->
+                        <!-- Top-Left Arm -->
+                        <line x1="205" y1="205" x2="140" y2="140" stroke="url(#droneGrad)" stroke-width="3.5" opacity="0.9"/>
+                        <line x1="215" y1="215" x2="150" y2="150" stroke="url(#droneGrad)" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="200" y1="210" x2="145" y2="155" stroke="url(#droneGrad)" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+                        
+                        <!-- Top-Right Arm -->
+                        <line x1="295" y1="205" x2="360" y2="140" stroke="url(#droneGrad)" stroke-width="3.5" opacity="0.9"/>
+                        <line x1="285" y1="215" x2="350" y2="150" stroke="url(#droneGrad)" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="300" y1="210" x2="355" y2="155" stroke="url(#droneGrad)" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+
+                        <!-- Bottom-Left Arm -->
+                        <line x1="205" y1="295" x2="140" y2="360" stroke="url(#droneGrad)" stroke-width="3.5" opacity="0.9"/>
+                        <line x1="215" y1="285" x2="150" y2="350" stroke="url(#droneGrad)" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="200" y1="290" x2="145" y2="345" stroke="url(#droneGrad)" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+
+                        <!-- Bottom-Right Arm -->
+                        <line x1="295" y1="295" x2="360" y2="360" stroke="url(#droneGrad)" stroke-width="3.5" opacity="0.9"/>
+                        <line x1="285" y1="285" x2="350" y2="350" stroke="url(#droneGrad)" stroke-width="2.5" opacity="0.7"/>
+                        <line x1="300" y1="290" x2="355" y2="345" stroke="url(#droneGrad)" stroke-width="1" stroke-dasharray="2 2" opacity="0.6"/>
+
+                        <!-- ================= CAD CENTRAL BODY PLATES ================= -->
+                        <!-- Outer Hexagonal Frame -->
+                        <path d="M220,190 L280,190 L330,230 L330,270 L280,310 L220,310 L170,270 L170,230 Z" fill="none" stroke="url(#droneGrad)" stroke-width="3" filter="url(#neonGlow)"/>
+                        <!-- Inner Support Ring -->
+                        <circle cx="250" cy="250" r="45" fill="none" stroke="#00d2ff" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.8"/>
+                        
+                        <!-- Flight Controller (FC) Stack & Sensor Compass -->
+                        <rect x="225" y="225" width="50" height="50" rx="4" fill="none" stroke="#00d2ff" stroke-width="2" transform="rotate(45 250 250)"/>
+                        <rect x="237" y="237" width="26" height="26" rx="2" fill="none" stroke="#6366f1" stroke-width="1.5" transform="rotate(45 250 250)" opacity="0.8"/>
+                        <!-- Core GPS heading compass needle -->
+                        <circle cx="250" cy="250" r="8" fill="none" stroke="#fff" stroke-width="2"/>
+                        <line x1="250" y1="250" x2="250" y2="235" stroke="#ff4757" stroke-width="2"/>
+                        
+                        <!-- ================= MOTOR UNITS & ASSEMBLIES ================= -->
+                        <!-- Top-Left Motor -->
+                        <circle cx="130" cy="130" r="16" fill="none" stroke="url(#droneGrad)" stroke-width="2"/>
+                        <circle cx="130" cy="130" r="10" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="2 2" opacity="0.8"/>
+                        <circle cx="130" cy="130" r="3" fill="#fff"/>
+                        
+                        <!-- Top-Right Motor -->
+                        <circle cx="370" cy="130" r="16" fill="none" stroke="url(#droneGrad)" stroke-width="2"/>
+                        <circle cx="370" cy="130" r="10" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="2 2" opacity="0.8"/>
+                        <circle cx="370" cy="130" r="3" fill="#fff"/>
+
+                        <!-- Bottom-Left Motor -->
+                        <circle cx="130" cy="370" r="16" fill="none" stroke="url(#droneGrad)" stroke-width="2"/>
+                        <circle cx="130" cy="370" r="10" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="2 2" opacity="0.8"/>
+                        <circle cx="130" cy="370" r="3" fill="#fff"/>
+
+                        <!-- Bottom-Right Motor -->
+                        <circle cx="370" cy="370" r="16" fill="none" stroke="url(#droneGrad)" stroke-width="2"/>
+                        <circle cx="370" cy="370" r="10" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="2 2" opacity="0.8"/>
+                        <circle cx="370" cy="370" r="3" fill="#fff"/>
+
+                        <!-- ================= HIGH-TECH ROTATING PROPELLERS ================= -->
+                        <!-- Top-Left Propeller -->
+                        <g transform="translate(130, 130)">
+                            <g class="propeller-spin">
+                                <!-- Aerodynamic slender blades -->
+                                <path d="M-60,-5 C-35,-8 -10,-4 0,0 C-10,4 -35,8 -60,5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <path d="M60,5 C35,8 10,4 0,0 C10,-4 35,-8 60,-5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="0" r="4.5" fill="#fff"/>
+                                <circle cx="0" cy="0" r="62" fill="none" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="2 4"/>
+                            </g>
                         </g>
-                        <g class="propeller" transform="translate(370, 130)">
-                            <ellipse cx="0" cy="0" rx="40" ry="10" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
-                            <circle cx="0" cy="0" r="4" fill="#fff"/>
+
+                        <!-- Top-Right Propeller -->
+                        <g transform="translate(370, 130)">
+                            <g class="propeller-spin">
+                                <path d="M-60,-5 C-35,-8 -10,-4 0,0 C-10,4 -35,8 -60,5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <path d="M60,5 C35,8 10,4 0,0 C10,-4 35,-8 60,-5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="0" r="4.5" fill="#fff"/>
+                                <circle cx="0" cy="0" r="62" fill="none" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="2 4"/>
+                            </g>
                         </g>
-                        <g class="propeller" transform="translate(130, 370)">
-                            <ellipse cx="0" cy="0" rx="40" ry="10" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
-                            <circle cx="0" cy="0" r="4" fill="#fff"/>
+
+                        <!-- Bottom-Left Propeller -->
+                        <g transform="translate(130, 370)">
+                            <g class="propeller-spin">
+                                <path d="M-60,-5 C-35,-8 -10,-4 0,0 C-10,4 -35,8 -60,5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <path d="M60,5 C35,8 10,4 0,0 C10,-4 35,-8 60,-5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="0" r="4.5" fill="#fff"/>
+                                <circle cx="0" cy="0" r="62" fill="none" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="2 4"/>
+                            </g>
                         </g>
-                        <g class="propeller" transform="translate(370, 370)">
-                            <ellipse cx="0" cy="0" rx="40" ry="10" fill="none" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
-                            <circle cx="0" cy="0" r="4" fill="#fff"/>
+
+                        <!-- Bottom-Right Propeller -->
+                        <g transform="translate(370, 370)">
+                            <g class="propeller-spin">
+                                <path d="M-60,-5 C-35,-8 -10,-4 0,0 C-10,4 -35,8 -60,5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <path d="M60,5 C35,8 10,4 0,0 C10,-4 35,-8 60,-5 Z" fill="rgba(0, 210, 255, 0.18)" stroke="#00d2ff" stroke-width="1.5"/>
+                                <circle cx="0" cy="0" r="4.5" fill="#fff"/>
+                                <circle cx="0" cy="0" r="62" fill="none" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="2 4"/>
+                            </g>
                         </g>
+
                         <!-- Data Rings -->
-                        <circle cx="250" cy="250" r="140" fill="none" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 12" class="spin-slow" opacity="0.4"/>
-                        <circle cx="250" cy="250" r="180" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="10 20" class="spin-reverse" opacity="0.2"/>
+                        <circle cx="250" cy="250" r="140" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="4 12" class="spin-slow" opacity="0.4"/>
+                        <circle cx="250" cy="250" r="180" fill="none" stroke="#00d2ff" stroke-width="1" stroke-dasharray="10 20" class="spin-reverse" opacity="0.2"/>
                     </svg>
                 </div>
             </div>

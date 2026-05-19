@@ -484,9 +484,9 @@ main {
     50% { transform: translateY(-20px) rotate(2deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
-.propeller { 
-    animation: spin 0.15s linear infinite; 
-    transform-origin: 0 0; 
+.propeller-spin { 
+    animation: spin 0.12s linear infinite; 
+    transform-origin: 0px 0px; 
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 .spin-slow { 
