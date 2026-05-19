@@ -1,29 +1,37 @@
 /* ==========================================================================
-   Yogesh E S - Premium Aerospace & Autonomy Portfolio Style Sheet
+   Yogesh E S - Professional Aeronautical & UAV Autonomy Portfolio Style Sheet
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --bg-base: #030712;
-    --bg-surface: rgba(10, 15, 30, 0.7);
-    --bg-panel: rgba(17, 24, 39, 0.6);
-    --bg-console: #050a18;
-    --primary: #06b6d4; /* Bright Cyber Cyan */
-    --primary-rgb: 6, 182, 212;
-    --secondary: #6366f1; /* Tech Indigo */
-    --secondary-rgb: 99, 102, 241;
-    --accent: #f43f5e; /* Alert Rose */
-    --accent-rgb: 244, 63, 94;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border-light: rgba(6, 182, 212, 0.15);
-    --border-glow: rgba(6, 182, 212, 0.4);
+    /* Pure Aeronautical Blueprint & Flight Instrumentation Color Palette */
+    --bg-base: #061121; /* Classic Engineering Blueprint Drafting Table Blue */
+    --bg-surface: rgba(10, 25, 45, 0.75); /* Engineering acrylic overlay */
+    --bg-panel: rgba(15, 32, 58, 0.7);
+    --bg-console: #040c18; /* Black-box flight telemetry console */
+    
+    /* Aeronautical Vector Telemetry Colors */
+    --primary: #00d2ff; /* Laser flight path cyan */
+    --primary-rgb: 0, 210, 255;
+    
+    /* CFD Pressure / Low-Velocity Aerodynamic Flow Colors */
+    --secondary: #6366f1; /* CFD Transition Indigo */
+    
+    /* CFD High-Pressure / Stagnation Point Flow Indicator */
+    --accent: #ff4757; /* Aerodynamic drag alert red */
+    
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    
+    /* Drafting Board Borders & Guidelines */
+    --border-light: rgba(0, 210, 255, 0.18);
+    --border-glow: rgba(0, 210, 255, 0.45);
+    
     --font-heading: 'Orbitron', sans-serif;
     --font-body: 'Outfit', sans-serif;
     --font-mono: 'Fira Code', monospace;
     --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    --glow-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
 }
 
 * { 
@@ -42,7 +50,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Custom Scrollbar */
+/* Custom Telemetry Scrollbar */
 ::-webkit-scrollbar { 
     width: 8px; 
 }
@@ -50,17 +58,16 @@ body {
     background: var(--bg-base); 
 }
 ::-webkit-scrollbar-thumb { 
-    background: rgba(6, 182, 212, 0.15); 
+    background: rgba(0, 210, 255, 0.2); 
     border-radius: 10px;
     border: 2px solid var(--bg-base);
-    transition: var(--transition);
 }
 ::-webkit-scrollbar-thumb:hover { 
     background: var(--primary); 
-    box-shadow: 0 0 10px var(--primary);
+    box-shadow: 0 0 12px var(--primary);
 }
 
-/* --- High-Tech Aerospace Background System --- */
+/* --- High-fidelity Aeronautical Drafting Background System --- */
 .space-background {
     position: fixed; 
     top: 0; 
@@ -68,12 +75,12 @@ body {
     width: 100vw; 
     height: 100vh;
     z-index: -3;
+    /* Soft blueprint gradient paper background */
     background: 
-        radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-        #030712;
+        radial-gradient(circle at 50% 50%, #0a1e38 0%, #050f1d 100%);
 }
 
+/* Technical Engineering Grid Overlay */
 .grid-overlay {
     position: fixed; 
     top: 0; 
@@ -81,36 +88,62 @@ body {
     width: 100vw; 
     height: 100vh;
     z-index: -2;
-    background-size: 60px 60px;
+    background-size: 40px 40px, 200px 200px;
     background-image: 
-        linear-gradient(to right, rgba(6, 182, 212, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+        /* Minor grid lines (1mm spacing equivalent) */
+        linear-gradient(to right, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+        /* Major grid lines (10mm spacing equivalent) */
+        linear-gradient(to right, rgba(0, 210, 255, 0.1) 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, rgba(0, 210, 255, 0.1) 1.5px, transparent 1.5px);
     pointer-events: none;
-    transform: perspective(600px) rotateX(60deg) scale(2) translateY(-100px);
-    animation: gridMove 30s linear infinite;
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
-@keyframes gridMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 60px; }
-}
-
+/* CFD Aerodynamic Pressure Gradients (Simulating Thermal/Velocity Flight Maps) */
 .ambient-glow {
     position: fixed; 
-    width: 600px; 
-    height: 600px; 
+    width: 650px; 
+    height: 650px; 
     border-radius: 50%;
-    filter: blur(160px); 
+    filter: blur(150px); 
     z-index: -1; 
     pointer-events: none; 
-    opacity: 0.15;
+    opacity: 0.2;
     mix-blend-mode: screen;
 }
-.primary-glow { background-color: var(--primary); }
-.accent-glow { background-color: var(--secondary); }
+/* Cool Airflow Stream low pressure */
+.primary-glow { 
+    background: radial-gradient(circle, rgba(0,210,255,0.25) 0%, transparent 70%); 
+}
+/* Hot Wing Stagnation CFD High pressure */
+.accent-glow { 
+    background: radial-gradient(circle, rgba(255,71,87,0.18) 0%, transparent 70%); 
+}
 
-/* --- Header / Navigation Bar --- */
+/* High-tech Aeronautical Compass / HUD Gauge Ring Watermark */
+.space-background::after {
+    content: '';
+    position: fixed;
+    bottom: -150px;
+    left: -150px;
+    width: 600px;
+    height: 600px;
+    border: 1px dashed rgba(0, 210, 255, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -2;
+    background-image: 
+        radial-gradient(circle, transparent 40%, rgba(0, 210, 255, 0.02) 40%, transparent 41%),
+        repeating-conic-gradient(from 0deg, rgba(0, 210, 255, 0.08) 0deg 1deg, transparent 1deg 10deg);
+    animation: HUDspin 60s linear infinite;
+}
+
+@keyframes HUDspin {
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Aeronautical SOP Navigation Bar --- */
 .glass-header {
     position: fixed; 
     top: 0; 
@@ -122,41 +155,42 @@ body {
     align-items: center;
     padding: 0 8%; 
     z-index: 100;
-    background: rgba(3, 7, 18, 0.75);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+    background: rgba(6, 17, 33, 0.85);
+    backdrop-filter: blur(25px) saturate(180%);
+    border-bottom: 2px solid rgba(0, 210, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
     transition: var(--transition);
 }
 
 .logo-text { 
     font-family: var(--font-heading); 
-    font-size: 1.6rem; 
-    font-weight: 800; 
-    letter-spacing: 3px; 
+    font-size: 1.55rem; 
+    font-weight: 900; 
+    letter-spacing: 4px; 
     color: var(--text-main);
-    text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+    text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
 }
 .logo-dot { 
     color: var(--primary); 
-    animation: flash 2s infinite;
+    animation: flash 1.5s infinite;
 }
 
 @keyframes flash {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.2; }
 }
 
 nav { 
     display: flex; 
-    gap: 45px; 
+    gap: 40px; 
 }
 .nav-link {
     color: var(--text-muted); 
     text-decoration: none; 
-    font-weight: 600; 
+    font-weight: 700; 
     font-size: 0.85rem;
     font-family: var(--font-heading);
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     transition: var(--transition); 
     position: relative;
@@ -169,13 +203,13 @@ nav {
     left: 0; 
     width: 0; 
     height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+    background: var(--primary); 
     transition: var(--transition);
     box-shadow: 0 0 8px var(--primary);
 }
 .nav-link:hover, .nav-link.active { 
     color: var(--primary); 
-    text-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }
 .nav-link:hover::after, .nav-link.active::after { 
     width: 100%; 
@@ -191,11 +225,11 @@ main {
     gap: 140px; 
 }
 
-/* --- Animations & Reveal Matrix --- */
+/* --- Reveal Matrices --- */
 .reveal { 
     opacity: 0; 
-    transform: translateY(30px); 
-    transition: 1s cubic-bezier(0.16, 1, 0.3, 1); 
+    transform: translateY(25px); 
+    transition: 0.9s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 .reveal.active { 
     opacity: 1; 
@@ -203,22 +237,22 @@ main {
 }
 .reveal-delay { 
     opacity: 0; 
-    transform: translateY(30px); 
-    transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s; 
+    transform: translateY(25px); 
+    transition: 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s; 
 }
 .reveal-delay.active { 
     opacity: 1; 
     transform: translateY(0); 
 }
 
-/* --- Interactive High-End Button System --- */
+/* --- Premium Flight Control Call-to-Actions --- */
 .btn {
     display: inline-flex; 
     align-items: center; 
     justify-content: center;
     gap: 12px; 
     padding: 15px 32px;
-    border-radius: 6px; 
+    border-radius: 4px; 
     font-weight: 700; 
     font-family: var(--font-heading);
     font-size: 0.85rem;
@@ -234,7 +268,8 @@ main {
 .primary-btn {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: #fff; 
-    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.25);
+    border: 1px solid rgba(0, 210, 255, 0.3);
 }
 .primary-btn::before {
     content: '';
@@ -243,28 +278,29 @@ main {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: 0.6s;
 }
 .primary-btn:hover::before {
     left: 100%;
 }
 .primary-btn:hover { 
-    transform: translateY(-4px); 
-    box-shadow: 0 12px 30px rgba(6, 182, 212, 0.45); 
+    transform: translateY(-3px); 
+    box-shadow: 0 12px 25px rgba(0, 210, 255, 0.45); 
+    border-color: var(--primary);
 }
 
 .secondary-btn { 
-    background: rgba(6, 182, 212, 0.05); 
+    background: rgba(0, 210, 255, 0.04); 
     color: var(--text-main); 
-    border-color: rgba(6, 182, 212, 0.25); 
+    border-color: rgba(0, 210, 255, 0.25); 
     backdrop-filter: blur(10px);
 }
 .secondary-btn:hover { 
-    background: rgba(6, 182, 212, 0.15); 
+    background: rgba(0, 210, 255, 0.12); 
     border-color: var(--primary); 
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
-    transform: translateY(-4px); 
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    transform: translateY(-3px); 
 }
 
 /* --- Section Formatting & Badging --- */
@@ -276,21 +312,22 @@ main {
     display: inline-block; 
     font-family: var(--font-heading); 
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--primary); 
     letter-spacing: 3px; 
     margin-bottom: 12px;
     padding: 4px 12px;
-    border-left: 2px solid var(--primary);
-    background: rgba(6, 182, 212, 0.05);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 2px;
+    background: rgba(0, 210, 255, 0.06);
 }
 .section-header h2 { 
     font-family: var(--font-heading); 
-    font-size: 2.5rem; 
-    font-weight: 800; 
+    font-size: 2.3rem; 
+    font-weight: 900; 
     color: var(--text-main); 
-    letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.05);
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
 }
 .section-subtitle { 
     color: var(--text-muted); 
@@ -301,9 +338,9 @@ main {
 
 .glass-section {
     background: var(--bg-surface); 
-    backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid rgba(6, 182, 212, 0.15); 
-    border-radius: 16px; 
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(0, 210, 255, 0.15); 
+    border-radius: 12px; 
     padding: 60px;
     box-shadow: 
         0 24px 50px rgba(0,0,0,0.5),
@@ -312,18 +349,18 @@ main {
 
 .glass-panel {
     background: var(--bg-panel); 
-    border: 1px solid rgba(6, 182, 212, 0.12);
-    border-radius: 12px; 
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    border-radius: 8px; 
     padding: 35px;
     backdrop-filter: blur(15px);
     transition: var(--transition);
 }
 .glass-panel:hover {
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    border-color: var(--primary);
+    box-shadow: 0 12px 30px rgba(0, 210, 255, 0.1);
 }
 
-/* --- Hero Section Masterpiece --- */
+/* --- Hero Section - Flight Control Hub --- */
 #hero { 
     display: grid; 
     grid-template-columns: 1.2fr 0.8fr; 
@@ -335,44 +372,45 @@ main {
     display: inline-flex; 
     align-items: center; 
     gap: 12px; 
-    background: rgba(6, 182, 212, 0.08);
-    border: 1px solid rgba(6, 182, 212, 0.3); 
+    background: rgba(0, 210, 255, 0.08);
+    border: 1.5px solid var(--border-glow); 
     color: var(--primary); 
     font-family: var(--font-heading);
     font-size: 0.8rem; 
-    font-weight: 700;
+    font-weight: 800;
     padding: 8px 18px; 
-    border-radius: 30px; 
+    border-radius: 4px; 
     margin-bottom: 35px; 
-    letter-spacing: 2px;
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+    letter-spacing: 2.5px;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
 }
 .status-pulse { 
     width: 8px; 
     height: 8px; 
     background-color: var(--primary); 
     border-radius: 50%; 
-    animation: pulse 1.8s infinite; 
+    animation: pulse 1.5s infinite; 
 }
 .hero-title { 
     font-family: var(--font-heading); 
-    font-size: 5rem; 
+    font-size: 4.8rem; 
     font-weight: 900; 
     line-height: 1.05; 
     margin-bottom: 20px; 
-    letter-spacing: -1.5px; 
-    background: linear-gradient(135deg, #fff 50%, rgba(255,255,255,0.6) 100%);
+    letter-spacing: -1px; 
+    background: linear-gradient(135deg, #fff 50%, rgba(255,255,255,0.7) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .hero-subtitle { 
     font-family: var(--font-heading); 
-    font-size: 1.6rem; 
-    color: var(--secondary); 
+    font-size: 1.5rem; 
+    color: var(--primary); 
     margin-bottom: 30px; 
     height: 38px;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
 }
 .cursor { 
     color: var(--primary); 
@@ -401,12 +439,12 @@ main {
     transition: var(--transition);
 }
 .stat-card:hover {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 .stat-num { 
     font-family: var(--font-heading); 
-    font-size: 2.2rem; 
-    font-weight: 800; 
+    font-size: 2.1rem; 
+    font-weight: 900; 
     color: var(--text-main); 
 }
 .stat-lbl { 
@@ -417,7 +455,7 @@ main {
     margin-top: 4px;
 }
 
-/* Drone Graphic SVG Animation */
+/* CAD Drone Blueprint Vector Animation */
 .drone-container { 
     position: relative; 
     width: 100%; 
@@ -431,7 +469,7 @@ main {
     position: absolute; 
     width: 320px; 
     height: 320px; 
-    background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 70%); 
+    background: radial-gradient(circle, rgba(0,210,255,0.15) 0%, transparent 70%); 
     filter: blur(40px); 
 }
 .drone-svg { 
@@ -443,11 +481,11 @@ main {
 
 @keyframes float {
     0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(3deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
 .propeller { 
-    animation: spin 0.18s linear infinite; 
+    animation: spin 0.15s linear infinite; 
     transform-origin: 0 0; 
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -462,23 +500,23 @@ main {
 @keyframes spinReverse { 100% { transform: rotate(-360deg); } }
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes pulse { 
-    0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); } 
-    70% { box-shadow: 0 0 0 12px rgba(6, 182, 212, 0); } 
-    100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); } 
+    0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); } 
+    70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); } 
+    100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); } 
 }
 
-/* --- About Section & Dynamic Profile --- */
+/* --- About Section & Technical Profile --- */
 .about-grid { 
     display: grid; 
     grid-template-columns: 1.4fr 1fr; 
     gap: 60px; 
 }
 .about-text h3 { 
-    font-size: 1.8rem; 
+    font-size: 1.7rem; 
     font-family: var(--font-heading);
     color: var(--text-main); 
     margin-bottom: 25px; 
-    font-weight: 700; 
+    font-weight: 800; 
 }
 .about-text p { 
     color: var(--text-muted); 
@@ -491,10 +529,10 @@ main {
     font-weight: 600; 
 }
 .highlight-quote { 
-    background: linear-gradient(90deg, rgba(6, 182, 212, 0.08), transparent); 
+    background: linear-gradient(90deg, rgba(0, 210, 255, 0.08), transparent); 
     border-left: 4px solid var(--primary); 
     padding: 30px; 
-    border-radius: 0 12px 12px 0; 
+    border-radius: 0 4px 4px 0; 
     margin-top: 45px; 
     font-style: italic; 
     color: var(--text-main); 
@@ -506,7 +544,7 @@ main {
     top: -15px;
     left: 20px;
     font-size: 2rem;
-    color: rgba(6, 182, 212, 0.15);
+    color: rgba(0, 210, 255, 0.15);
 }
 
 .about-card { 
@@ -518,7 +556,7 @@ main {
 .card-line { 
     display: flex; 
     flex-direction: column; 
-    border-bottom: 1px solid rgba(6, 182, 212, 0.12); 
+    border-bottom: 1px dashed rgba(0, 210, 255, 0.2); 
     padding-bottom: 15px; 
 }
 .card-line span { 
@@ -540,10 +578,10 @@ main {
     align-items: center; 
     justify-content: center; 
     gap: 12px; 
-    background: rgba(6, 182, 212, 0.05); 
+    background: rgba(0, 210, 255, 0.04); 
     color: var(--text-main); 
     padding: 18px; 
-    border-radius: 6px; 
+    border-radius: 4px; 
     text-decoration: none; 
     font-weight: 700; 
     font-family: var(--font-heading);
@@ -552,17 +590,17 @@ main {
     font-size: 0.8rem;
     margin-top: 15px; 
     transition: var(--transition); 
-    border: 1px solid rgba(6, 182, 212, 0.25); 
+    border: 1px solid rgba(0, 210, 255, 0.25); 
 }
 .github-btn:hover { 
     background: var(--primary); 
-    color: #fff; 
+    color: #061121; 
     border-color: var(--primary); 
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
     transform: translateY(-3px); 
 }
 
-/* --- High-Professional Project Cards Deck --- */
+/* --- Professional Aeronautical Project Cards Deck --- */
 .projects-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
@@ -570,14 +608,14 @@ main {
 }
 .project-card {
     position: relative; 
-    background: rgba(10, 15, 30, 0.6); 
-    border-radius: 16px; 
+    background: rgba(10, 25, 45, 0.7); 
+    border-radius: 12px; 
     overflow: hidden;
     text-decoration: none; 
     display: flex; 
     flex-direction: column; 
     transition: var(--transition);
-    border: 1px solid rgba(6, 182, 212, 0.12); 
+    border: 1.5px solid rgba(0, 210, 255, 0.15); 
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
@@ -587,17 +625,17 @@ main {
     left: 0; 
     width: 100%; 
     height: 4px; 
-    background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+    background: var(--primary); 
     opacity: 0; 
     transition: var(--transition); 
 }
 .project-card:hover { 
-    transform: translateY(-10px); 
-    background: rgba(15, 23, 42, 0.8); 
+    transform: translateY(-8px); 
+    background: rgba(15, 35, 65, 0.95); 
     box-shadow: 
         0 25px 50px rgba(0,0,0,0.5),
-        0 0 30px rgba(6, 182, 212, 0.15); 
-    border-color: rgba(6, 182, 212, 0.4); 
+        0 0 25px rgba(0, 210, 255, 0.2); 
+    border-color: var(--primary); 
 }
 .project-card:hover .card-gradient-border { 
     opacity: 1; 
@@ -610,20 +648,20 @@ main {
     transition: var(--transition);
 }
 .project-card:hover .project-icon {
-    transform: scale(1.15);
+    transform: scale(1.1);
     text-shadow: 0 0 15px var(--primary);
 }
 .project-title { 
     font-family: var(--font-heading); 
-    font-size: 1.5rem; 
+    font-size: 1.45rem; 
     color: var(--text-main); 
     margin-bottom: 10px; 
 }
 .project-subtitle { 
     font-size: 0.95rem; 
-    color: var(--secondary); 
+    color: var(--primary); 
     margin-bottom: 22px; 
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-heading);
     letter-spacing: 1px;
 }
@@ -637,21 +675,21 @@ main {
 .tech-tags { 
     display: flex; 
     flex-wrap: wrap; 
-    gap: 10px; 
+    gap: 8px; 
 }
 .tech-tags span { 
     font-size: 0.75rem; 
     font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: 0.5px;
-    background: rgba(6, 182, 212, 0.08); 
+    background: rgba(0, 210, 255, 0.08); 
     color: var(--primary); 
     padding: 6px 14px; 
-    border-radius: 4px; 
-    border: 1px solid rgba(6, 182, 212, 0.15);
+    border-radius: 2px; 
+    border: 1px solid rgba(0, 210, 255, 0.25);
 }
 
-/* --- Tech Skill Competencies Matrix --- */
+/* --- Tech Competencies Progress Indicators --- */
 .skills-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -659,14 +697,15 @@ main {
 }
 .skill-category h4 { 
     font-family: var(--font-heading); 
-    font-size: 1.15rem; 
+    font-size: 1.1rem; 
     color: var(--text-main); 
     display: flex; 
     align-items: center; 
     gap: 12px; 
     margin-bottom: 30px; 
-    border-bottom: 1px solid rgba(6, 182, 212, 0.15);
+    border-bottom: 1.5px solid rgba(0, 210, 255, 0.25);
     padding-bottom: 10px;
+    letter-spacing: 1px;
 }
 .skill-category h4 i { 
     color: var(--primary); 
@@ -692,18 +731,19 @@ main {
     width: 100%; 
     height: 6px; 
     background: rgba(255, 255, 255, 0.05); 
-    border-radius: 4px; 
+    border-radius: 2px; 
     overflow: hidden; 
+    border: 1px solid rgba(0, 210, 255, 0.1);
 }
 .skill-fill { 
     height: 100%; 
     background: linear-gradient(90deg, var(--primary), var(--secondary)); 
-    border-radius: 4px; 
+    border-radius: 2px; 
     position: relative; 
     transition: width 1.5s ease-in-out;
 }
 
-/* --- High-Aesthetic Interactive Contact Terminal --- */
+/* --- High-Aesthetic Telemetry Contact Terminal --- */
 .contact-grid { 
     display: grid; 
     grid-template-columns: 1.3fr 0.7fr; 
@@ -711,18 +751,18 @@ main {
 }
 .console-box { 
     background: var(--bg-console); 
-    border: 1px solid rgba(6, 182, 212, 0.2); 
-    border-radius: 12px; 
+    border: 1.5px solid rgba(0, 210, 255, 0.2); 
+    border-radius: 8px; 
     overflow: hidden; 
     box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 .console-header { 
-    background: #090f1d; 
+    background: #061121; 
     padding: 16px 24px; 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    border-bottom: 1px solid rgba(6, 182, 212, 0.15); 
+    border-bottom: 1.5px solid rgba(0, 210, 255, 0.2); 
 }
 .window-controls { 
     display: flex; 
@@ -733,9 +773,9 @@ main {
     height: 12px; 
     border-radius: 50%; 
 }
-.red-dot { background: #f43f5e; } 
-.yellow-dot { background: #fbbf24; } 
-.green-dot { background: #10b981; }
+.red-dot { background: #ff4757; } 
+.yellow-dot { background: #ffa502; } 
+.green-dot { background: #2ed573; }
 .console-title { 
     font-family: var(--font-mono); 
     font-size: 0.8rem; 
@@ -752,7 +792,7 @@ main {
 .console-body p { 
     font-family: var(--font-mono); 
     font-size: 0.95rem; 
-    color: #a5b4fc; /* soft blue-indigo for terminal code */
+    color: #a5b4fc; 
     line-height: 1.8; 
 }
 .console-body p strong {
@@ -761,7 +801,7 @@ main {
 .copy-btn { 
     align-self: flex-start; 
     padding: 14px 28px; 
-    background: rgba(6, 182, 212, 0.05); 
+    background: rgba(0, 210, 255, 0.04); 
     border: 1px solid var(--primary); 
     color: var(--primary); 
     font-family: var(--font-heading);
@@ -772,8 +812,8 @@ main {
 }
 .copy-btn:hover { 
     background: var(--primary); 
-    color: #fff; 
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    color: #061121; 
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
 }
 
 .contact-links { 
@@ -784,35 +824,35 @@ main {
 }
 .contact-links h3 { 
     font-family: var(--font-heading); 
-    font-size: 1.4rem; 
+    font-size: 1.35rem; 
     margin-bottom: 10px; 
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 .contact-item { 
     display: flex; 
     align-items: center; 
     gap: 22px; 
     padding: 18px 0; 
-    border-bottom: 1px solid rgba(6, 182, 212, 0.12); 
+    border-bottom: 1px dashed rgba(0, 210, 255, 0.25); 
 }
 .icon-wrap { 
     width: 50px; 
     height: 50px; 
-    border-radius: 8px; 
-    background: rgba(6, 182, 212, 0.08); 
+    border-radius: 4px; 
+    background: rgba(0, 210, 255, 0.06); 
     color: var(--primary); 
     display: flex; 
     justify-content: center; 
     align-items: center; 
     font-size: 1.3rem; 
-    border: 1px solid rgba(6, 182, 212, 0.15);
+    border: 1.5px solid rgba(0, 210, 255, 0.25);
     transition: var(--transition);
 }
 .contact-item:hover .icon-wrap {
     background: var(--primary);
-    color: #fff;
+    color: #061121;
     box-shadow: 0 0 15px var(--primary);
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 .contact-data { 
     display: flex; 
@@ -839,10 +879,10 @@ main {
 /* --- Footer --- */
 footer { 
     padding: 60px 0; 
-    border-top: 1px solid rgba(6, 182, 212, 0.15); 
+    border-top: 2px solid rgba(0, 210, 255, 0.2); 
     margin-top: 80px; 
     text-align: center; 
-    background: rgba(2, 6, 23, 0.4);
+    background: rgba(4, 12, 24, 0.9);
 }
 .footer-content { 
     display: flex; 
@@ -856,7 +896,7 @@ footer {
     letter-spacing: 0.5px;
 }
 
-/* --- Fully Fluid Responsiveness System --- */
+/* --- Responsive Formatting --- */
 @media (max-width: 1024px) {
     main {
         padding-top: 110px;
@@ -889,7 +929,7 @@ footer {
         font-size: 3.5rem; 
     }
     nav { 
-        display: none; /* Add floating menu later */
+        display: none; 
     } 
     .glass-section { 
         padding: 35px; 
