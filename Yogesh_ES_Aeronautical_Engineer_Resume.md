@@ -1,5 +1,5 @@
 # YOGESH E S | AERONAUTICAL ENGINEER
-yogeshes376@gmail.com | https://github.com/yogesh031020 | https://yogesh031020.github.io/
+yogeshes376@gmail.com | https://github.com/yogesh031020 | https://yogesh031020.github.io/ | https://www.linkedin.com/in/yogesh-e-s-9380b540b/
 
 ## PROFESSIONAL PROFILE
 High-performance Aeronautical Engineer with 2+ years of industry experience specializing in UAV Autonomy, custom flight controller development, ROS 2 integration, and PX4/ArduPilot diagnostics. Proven track record of architecting failure-resilient embedded flight stacks, swarm intelligence protocols, and visual-inertial odometry setups for defense and commercial platforms.
