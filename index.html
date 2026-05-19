@@ -27,6 +27,7 @@
         </div>
         <nav>
             <a href="#about" class="nav-link active">Profile</a>
+            <a href="#wind-tunnel" class="nav-link">Wind Tunnel</a>
             <a href="#projects" class="nav-link">Autonomy Stack</a>
             <a href="#skills" class="nav-link">Competencies</a>
             <a href="#contact" class="nav-link">Outreach</a>
@@ -224,13 +225,183 @@
             </div>
         </section>
 
+        <!-- Interactive CFD Wind Tunnel Section -->
+        <section id="wind-tunnel" class="glass-section reveal">
+            <div class="section-header">
+                <span class="section-badge">02 // TELEMETRY</span>
+                <h2>CFD WIND TUNNEL & HUD CONSOLE</h2>
+                <p class="section-subtitle">Real-time aerodynamic coefficient solver. Adjust parameters to verify laminar/turbulent boundaries and structural load distributions.</p>
+            </div>
+            
+            <div class="wind-tunnel-grid">
+                <!-- Simulator Left Panel (Visual Wind Tunnel) -->
+                <div class="tunnel-visual glass-panel">
+                    <div class="panel-header-hud">
+                        <span class="hud-indicator"><span class="status-pulse"></span> VISUALIZER: ACTIVE</span>
+                        <span class="hud-coordinates" id="hud-alpha-val">AoA: 4.00°</span>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="windTunnelCanvas"></canvas>
+                        <!-- Stall alert HUD overlay -->
+                        <div id="stall-warning" class="stall-alert hidden">
+                            <i class="fa-solid fa-triangle-exclamation animate-flash"></i> FLIGHT BOUNDARY EXCEEDED: STALL DETECTED
+                        </div>
+                    </div>
+                    <div class="panel-footer-hud">
+                        <span>SYS_CLOCK: 60Hz</span>
+                        <span>GRID_SCALE: 1:1</span>
+                        <span>FLUID: AIR (SEA_LEVEL)</span>
+                    </div>
+                </div>
+                
+                <!-- Telemetry & Controls Right Panel -->
+                <div class="tunnel-controls glass-panel">
+                    <h3>TELEMETRY & COMMAND PANEL</h3>
+                    
+                    <!-- Digital Readout Gauges -->
+                    <div class="hud-gauges">
+                        <div class="gauge-card">
+                            <span class="gauge-label">LIFT FORCE (L)</span>
+                            <span class="gauge-value" id="lift-val">152.4 N</span>
+                        </div>
+                        <div class="gauge-card">
+                            <span class="gauge-label">DRAG FORCE (D)</span>
+                            <span class="gauge-value" id="drag-val">14.1 N</span>
+                        </div>
+                        <div class="gauge-card">
+                            <span class="gauge-label">LIFT/DRAG RATIO</span>
+                            <span class="gauge-value" id="ld-val">10.8</span>
+                        </div>
+                        <div class="gauge-card">
+                            <span class="gauge-label">LIFT COEFF (Cl)</span>
+                            <span class="gauge-value" id="cl-val">0.64</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls Deck -->
+                    <div class="controls-deck">
+                        <!-- Airfoil Select -->
+                        <div class="control-group">
+                            <label for="airfoil-select"><i class="fa-solid fa-feather-pointed"></i> Airfoil Profile Selection</label>
+                            <select id="airfoil-select" class="hud-select">
+                                <option value="naca0012">NACA 0012 (Symmetric - Aerobatic/Stab)</option>
+                                <option value="naca4412" selected>NACA 4412 (Cambered - UAV Wing)</option>
+                                <option value="eppler387">Eppler 387 (High-Lift - HALE UAV)</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Angle of Attack Slider -->
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="aoa-slider"><i class="fa-solid fa-compass"></i> Angle of Attack (α)</label>
+                                <span class="slider-val" id="aoa-slider-val">4.0°</span>
+                            </div>
+                            <input type="range" id="aoa-slider" min="-8" max="22" step="0.5" value="4" class="hud-slider">
+                        </div>
+                        
+                        <!-- Velocity Slider -->
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label for="velocity-slider"><i class="fa-solid fa-gauge-high"></i> Flow Velocity (Airspeed)</label>
+                                <span class="slider-val" id="velocity-slider-val">80 kts</span>
+                            </div>
+                            <input type="range" id="velocity-slider" min="20" max="150" step="5" value="80" class="hud-slider">
+                        </div>
+                    </div>
+
+                    <!-- Mini Plot Area -->
+                    <div class="plot-container">
+                        <canvas id="clCurveCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Grid Section -->
         <section id="projects" class="reveal">
             <div class="section-header">
-                <span class="section-badge">02 // SYSTEMS</span>
+                <span class="section-badge">03 // SYSTEMS</span>
                 <h2>FLAGSHIP AUTONOMY DECK</h2>
                 <p class="section-subtitle">Real code. Real math. Real simulations. Click to inspect live on GitHub.</p>
             </div>
+            
+            <!-- Featured Flagship Project: Project ICARUS -->
+            <div class="featured-project-container glass-panel reveal">
+                <div class="featured-project-badge"><i class="fa-solid fa-star"></i> FLAGSHIP RESEARCH & DEVELOPMENT</div>
+                <div class="featured-project-content">
+                    <div class="featured-project-info">
+                        <div class="featured-project-icon-title">
+                            <div class="project-icon"><i class="fa-solid fa-shuttle-space"></i></div>
+                            <div>
+                                <h3 class="project-title">Project ICARUS</h3>
+                                <div class="project-subtitle">High-Altitude Long-Endurance (HALE) Autonomy & Aerodynamics</div>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            A complete aerospace systems lifecycle combining advanced computational fluid dynamics (CFD) and structural analysis with deep learning and real-time reinforcement learning flight control.
+                        </p>
+                        <div class="featured-project-phases">
+                            <div class="phase-box">
+                                <strong>Phase 1.0 // Aero-Structural Foundation</strong>
+                                <p>Constructed a 3.0m wingspan HALE UAV in OpenVSP. Certified the load factor using CalculiX/PrePoMax FEA and validated aerodynamic L/D bounds with OpenFOAM CFD solvers.</p>
+                            </div>
+                            <div class="phase-box">
+                                <strong>Phase 2.0 // Neural Design & RL Autonomy</strong>
+                                <p>Engineered an MLP Neural Network to programmatically optimize airfoil geometries (+12% lift efficiency). Implemented an attitude controller using reinforcement learning interfacing MAVLink flight stacks.</p>
+                            </div>
+                        </div>
+                        <div class="tech-tags">
+                            <span>OpenVSP</span><span>CalculiX FEA</span><span>OpenFOAM CFD</span><span>PyTorch</span><span>MAVLink SITL</span><span>Digital Twin</span>
+                        </div>
+                        <div class="featured-project-actions">
+                            <a href="https://github.com/yogesh031020/Project-ICARUS" target="_blank" class="btn primary-btn"><i class="fa-brands fa-github"></i> Inspect ICARUS Source Code</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Schematic UI Graphic -->
+                    <div class="featured-project-schematic">
+                        <div class="schematic-header">
+                            <span>DRAWING_NO: HALE-H4-REV2</span>
+                            <span>SCALE: 1:30</span>
+                        </div>
+                        <div class="schematic-view">
+                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="haleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00d2ff" />
+                                        <stop offset="100%" stop-color="#6366f1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Blueprint style HALE wireframe -->
+                                <circle cx="200" cy="150" r="130" fill="none" stroke="rgba(0, 210, 255, 0.12)" stroke-dasharray="2 4"/>
+                                <line x1="200" y1="20" x2="200" y2="280" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="8 8"/>
+                                <line x1="20" y1="150" x2="380" y2="150" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1" stroke-dasharray="8 8"/>
+                                
+                                <!-- Wings -->
+                                <path d="M40,145 L200,135 L360,145 L360,152 L200,145 L40,152 Z" fill="none" stroke="url(#haleGrad)" stroke-width="2"/>
+                                <!-- Fuselage -->
+                                <ellipse cx="200" cy="150" rx="14" ry="75" fill="none" stroke="url(#haleGrad)" stroke-width="2"/>
+                                <!-- Horizontal Stabilizer -->
+                                <path d="M140,225 L200,218 L260,225 L260,230 L200,223 L140,230 Z" fill="none" stroke="#6366f1" stroke-width="1.5"/>
+                                <!-- Vertical Stabilizer -->
+                                <line x1="200" y1="223" x2="200" y2="185" stroke="#6366f1" stroke-width="2"/>
+                                
+                                <!-- Dimension lines -->
+                                <line x1="40" y1="120" x2="360" y2="120" stroke="#ff4757" stroke-width="1" opacity="0.7"/>
+                                <line x1="40" y1="115" x2="40" y2="125" stroke="#ff4757" stroke-width="1" opacity="0.7"/>
+                                <line x1="360" y1="115" x2="360" y2="125" stroke="#ff4757" stroke-width="1" opacity="0.7"/>
+                                <text x="200" y="112" fill="#ff4757" font-family="'Orbitron', sans-serif" font-size="10" text-anchor="middle" font-weight="700">SPAN: 3.16m (+5.3%)</text>
+                                
+                                <text x="35" y="270" fill="rgba(0, 210, 255, 0.6)" font-family="'Fira Code', monospace" font-size="8">L/D RATIO: 15.9</text>
+                                <text x="35" y="285" fill="rgba(0, 210, 255, 0.6)" font-family="'Fira Code', monospace" font-size="8">EFFICIENCY: +11.9%</text>
+                                <text x="245" y="270" fill="rgba(0, 210, 255, 0.6)" font-family="'Fira Code', monospace" font-size="8">MAX_ALT: 22,000m</text>
+                                <text x="245" y="285" fill="rgba(0, 210, 255, 0.6)" font-family="'Fira Code', monospace" font-size="8">STRESS: 9.42e4 Pa</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="projects-grid">
                 
                 <a href="https://github.com/yogesh031020/-Project-TRINITY" target="_blank" class="project-card">
@@ -317,7 +488,7 @@
         <!-- Technical Skill Matrix Section -->
         <section id="skills" class="glass-section reveal">
             <div class="section-header">
-                <span class="section-badge">03 // COMPETENCIES</span>
+                <span class="section-badge">04 // COMPETENCIES</span>
                 <h2>ENGINEERING MATRIX</h2>
             </div>
             <div class="skills-grid">
@@ -366,7 +537,7 @@
         <!-- Direct Contact Console -->
         <section id="contact" class="reveal">
             <div class="section-header">
-                <span class="section-badge">04 // OUTREACH</span>
+                <span class="section-badge">05 // OUTREACH</span>
                 <h2>COMMUNICATION LINK</h2>
                 <p class="section-subtitle">Engineering managers and founders: Bypass the portal. Connect directly.</p>
             </div>
