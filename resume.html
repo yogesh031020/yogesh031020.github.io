@@ -241,6 +241,29 @@
             color: var(--text-muted);
         }
 
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+            filter: brightness(1.05);
+        }
+
         /* Print Optimization */
         @media print {
             body {
@@ -254,12 +277,20 @@
                 border: none;
                 padding: 0;
             }
+            .download-container {
+                display: none !important;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="resume-page">
+        <!-- DOWNLOAD BUTTON -->
+        <div class="download-container" style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+            <a href="Yogesh_ES_Drone_Engineer_Resume.pdf" download class="download-btn">📥 Download PDF Resume</a>
+        </div>
+
         <!-- HEADER HOOK -->
         <header>
             <div class="header-left">
