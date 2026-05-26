@@ -3,396 +3,723 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yogesh E S | UAV Systems & Autonomy Engineer Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <title>Yogesh E S | Aeronautical & Autonomy Systems Engineer Portfolio</title>
+    <meta name="description" content="Professional portfolio of Yogesh E S, Aeronautical & Autonomy Systems Engineer specializing in UAV Autonomy, avionics, ROS 2, and flight hardware.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-canvas: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --primary: #0284c7;
-            --secondary: #4f46e5;
-            --border: #e2e8f0;
-            --tint: #f8fafc;
+            --bg-color: #0B0F19;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --accent-primary: #6366F1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-cyan: #06B6D4;
+            --glow-cyan: rgba(6, 182, 212, 0.15);
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f1f5f9;
-            color: var(--text-main);
-            font-family: 'Outfit', sans-serif;
-            line-height: 1.45;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+            background-attachment: fixed;
         }
 
-        .resume-page {
-            background: var(--bg-canvas);
-            width: 800px;
-            padding: 45px 50px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+        }
+
+        /* Header Layout */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 50px;
             position: relative;
         }
 
-        /* 6-Second Scan Optimization: Header Hook */
-        header {
-            border-bottom: 2px solid var(--text-main);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-cyan));
+            border-radius: 2px;
         }
 
-        .header-left h1 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: 2.3rem;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-            line-height: 1.1;
+        .profile-name {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF 30%, #A5B4FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
         }
 
-        .header-left .title-badge {
-            color: var(--primary);
+        .profile-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
             font-weight: 600;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
         }
 
         .contact-grid {
-            text-align: right;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 25px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            margin-bottom: 25px;
         }
 
-        .contact-grid a {
-            color: var(--text-main);
+        .contact-item {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-grid a:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        /* Section Layouts */
-        section {
-            margin-bottom: 22px;
-        }
-
-        h2 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 1.5px solid var(--border);
-            padding-bottom: 4px;
-            margin-bottom: 12px;
             display: flex;
             align-items: center;
+            gap: 8px;
+            transition: color 0.2s ease;
         }
 
-        h2::after {
+        .contact-item:hover {
+            color: var(--text-primary);
+        }
+
+        .contact-item .icon {
+            font-style: normal;
+        }
+
+        /* Achievements Banner */
+        .achievements-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            max-width: 900px;
+            margin: 10px auto 30px auto;
+            font-family: var(--font-display);
+        }
+
+        .achievement-tag {
+            background: rgba(6, 182, 212, 0.06);
+            color: #CCFBF1;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Section Layout */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #FFFFFF;
+        }
+
+        .section-title::after {
             content: '';
             flex-grow: 1;
-            margin-left: 10px;
             height: 1px;
-            background-color: var(--border);
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 15px;
         }
 
-        /* Technical Competency Matrix */
-        .skills-table {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 20px;
-            background: var(--tint);
-            padding: 12px 18px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            margin-bottom: 15px;
+        /* Card System (Glassmorphic) */
+        .glass {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .skill-group {
+        .card {
+            padding: 30px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px -15px var(--accent-glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Summary Text */
+        .summary-text {
+            font-size: 1.05rem;
+            color: #D1D5DB;
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        /* Skills Layout */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .skills-category {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-name {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badges-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: #E0E7FF;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 5px 12px;
+            border-radius: 50px;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
-        .skill-group strong {
-            color: var(--text-main);
-            font-weight: 600;
+        .skill-badge:hover {
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+            border-color: var(--accent-primary);
         }
 
-        /* Experience & Projects Block */
-        .experience-item {
-            margin-bottom: 14px;
-        }
-
-        .exp-header {
+        /* Experience Elements */
+        .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 4px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .exp-role {
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .text-accent {
+            color: var(--accent-cyan) !important;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: var(--accent-primary);
             font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-main);
+            margin-top: 2px;
         }
 
-        .exp-company {
-            color: var(--primary);
-            font-weight: 500;
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .exp-date {
+        .meta-item {
             font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        ul {
-            list-style-type: none;
+        .meta-item .icon {
+            font-style: normal;
         }
 
-        li {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            font-size: 0.95rem;
+            color: #D1D5DB;
+            margin-bottom: 12px;
+            padding-left: 20px;
             position: relative;
-            padding-left: 14px;
-            line-height: 1.4;
+            text-align: justify;
         }
 
-        li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
+        .bullet-list li::before {
+            content: '•';
             position: absolute;
             left: 0;
-            top: 0;
+            color: var(--accent-cyan);
+            font-weight: bold;
         }
 
-        /* Project Layout */
-        .project-item {
-            margin-bottom: 12px;
+        .bullet-list li:last-child {
+            margin-bottom: 0;
         }
 
-        .project-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            margin-bottom: 3px;
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
         }
 
-        .project-title span {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-size: 0.8rem;
-            margin-left: 5px;
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .project-card::before {
+            background: var(--accent-cyan);
+        }
+
+        .project-card:hover {
+            border-color: rgba(6, 182, 212, 0.3);
+            box-shadow: 0 20px 40px -15px var(--glow-cyan);
+        }
+
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0 18px 0;
+        }
+
+        .tech-pill {
+            background: rgba(6, 182, 212, 0.08);
+            color: #A5F3FC;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 500;
         }
 
         .project-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* Education & Additional Information */
-        .edu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-
-        .edu-title {
-            font-weight: 600;
             font-size: 0.95rem;
-            color: var(--text-main);
+            color: #D1D5DB;
+            text-align: justify;
+            line-height: 1.65;
         }
 
-        .edu-desc {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-top: 3px;
+        /* Education Details */
+        .edu-thesis {
+            font-size: 0.95rem;
+            color: #D1D5DB;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-cyan);
+            margin-top: 15px;
         }
 
-        .lang-cert-grid {
+        /* Double Column Grid at Bottom */
+        .bottom-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #ffffff !important;
-            padding: 8px 18px;
-            border-radius: 6px;
+        @media (min-width: 768px) {
+            .bottom-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .bottom-card {
+            padding: 25px;
+            height: 100%;
+        }
+
+        .cert-text, .lang-text {
+            font-size: 0.98rem;
+            color: #D1D5DB;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
             font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Action Buttons */
+        .actions-container {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background: rgba(99, 102, 241, 0.2);
+            color: #FFFFFF;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
+            backdrop-filter: blur(10px);
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .download-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
-            filter: brightness(1.05);
-        }
-
-        /* Print Optimization */
-        @media print {
-            body {
-                background: #ffffff;
-                padding: 0;
-                margin: 0;
-            }
-            .resume-page {
-                width: 100%;
-                box-shadow: none;
-                border: none;
-                padding: 0;
-            }
-            .download-container {
-                display: none !important;
-            }
+        .action-btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-page">
-        <!-- DOWNLOAD BUTTON -->
-        <div class="download-container" style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
-            <a href="Yogesh_ES_Drone_Engineer_Resume.pdf" download class="download-btn">📥 Download PDF Resume</a>
-        </div>
+    <div class="actions-container">
+        <a href="index.html" class="action-btn">🏠 Home Terminal</a>
+    </div>
 
-        <!-- HEADER HOOK -->
+    <div class="container">
         <header>
-            <div class="header-left">
-                <h1>YOGESH E S</h1>
-                <div class="title-badge">UAV Systems & Autonomy Engineer</div>
-            </div>
+            <h1 class="profile-name">Yogesh E S</h1>
+            <div class="profile-title">Aeronautical & Autonomy Systems Engineer</div>
+            
             <div class="contact-grid">
-                <div>✉️ <a href="mailto:yogeshes376@gmail.com">yogeshes376@gmail.com</a> | 📞 7892634405</div>
-                <div>📍 Bengaluru, India | 🔗 <a href="https://yogesh031020.github.io/" target="_blank">yogesh031020.github.io</a></div>
-                <div>💻 <a href="https://github.com/yogesh031020" target="_blank">github.com/yogesh031020</a> | 🔗 <a href="https://www.linkedin.com/in/yogesh-e-s-9380b540b/" target="_blank">linkedin.com/in/yogesh-e-s</a></div>
+                <a href="mailto:yogeshes376@gmail.com" class="contact-item"><i class="icon">✉</i> yogeshes376@gmail.com</a>
+                <span class="contact-item"><i class="icon">📞</i> +91 78926 34405</span>
+                <span class="contact-item"><i class="icon">📍</i> Bengaluru, India</span>
+                <a href="https://linkedin.com/in/yogesh-e-s" target="_blank" class="contact-item"><i class="icon">🔗</i> LinkedIn</a>
+                <a href="https://yogesh031020.github.io" target="_blank" class="contact-item"><i class="icon">🔗</i> Portfolio</a>
+                <a href="https://github.com/yogesh031020" target="_blank" class="contact-item"><i class="icon">🔗</i> GitHub</a>
+            </div>
+
+            <div class="achievements-grid">
+                <span class="achievement-tag">🏆 120+ BVLOS Sorties</span>
+                <span class="achievement-tag">🏆 25% Vibration Reduction</span>
+                <span class="achievement-tag">🏆 40% Network Overhead Cut</span>
+                <span class="achievement-tag">🏆 ±1.2 m Position Hold</span>
+                <span class="achievement-tag">🏆 33% GCS Setup Reduction</span>
             </div>
         </header>
 
-        <!-- TECHNICAL MATRICES -->
-        <section>
-            <h2>Core Competency Matrix</h2>
-            <div class="skills-table">
-                <div class="skill-group">
-                    <strong>Avionics & Control:</strong> ArduPilot / PX4 Porting, Custom ESP32-S3 Boards, SITL
+        <section id="summary">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="card glass">
+                <p class="summary-text">Aeronautical & UAV Systems Engineer with end-to-end ownership of autonomous drone development from bare-metal ESP32-S3 autopilot PCB design and ArduPilot HAL integration to ROS 2 swarm middleware and BVLOS field operations. Designed, built, and flight-tested custom flight controllers with EKF3 sensor fusion; commanded operations across a 20+ airframe fleet through 120+ sorties under DGCA UAS Rules 2021. Seeking to bring this depth across the full stack from sensor integration to autonomous mission execution at a company building mission-critical UAV systems.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="card glass skills-container">
+                <div class="skills-category">
+                    <span class="category-name">Flight Software & Autopilot</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">ArduPilot (HAL Porting/Integration)</span>
+                        <span class="skill-badge">PX4 Autopilot</span>
+                        <span class="skill-badge">MAVLink v2</span>
+                        <span class="skill-badge">SITL / HIL Test Environments</span>
+                        <span class="skill-badge">Autopilot Failsafe Design</span>
+                        <span class="skill-badge">Flight Log Diagnostics</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <strong>Autonomy & Middleware:</strong> ROS 2 (Humble, Jazzy), Zenoh, Micro-XRCE-DDS, MAVLink
+
+                <div class="skills-category">
+                    <span class="category-name">Robotics & Middleware</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">ROS 2 (Humble/Jazzy)</span>
+                        <span class="skill-badge">rclcpp</span>
+                        <span class="skill-badge">tf2</span>
+                        <span class="skill-badge">nav2</span>
+                        <span class="skill-badge">Zenoh DDS</span>
+                        <span class="skill-badge">Micro-XRCE-DDS</span>
+                        <span class="skill-badge">Behavior Trees</span>
+                        <span class="skill-badge">Gazebo Harmonic</span>
+                        <span class="skill-badge">RViz2</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <strong>Programming & Systems:</strong> C++17/20, Python, C, Linux Shell, Docker
+
+                <div class="skills-category">
+                    <span class="category-name">Embedded & Avionics Hardware</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">Custom Autopilot PCB Design (ESP32-S3)</span>
+                        <span class="skill-badge">FreeRTOS</span>
+                        <span class="skill-badge">DSHOT/ESC Wiring</span>
+                        <span class="skill-badge">Sensor Bring-Up (SPI, I2C, CAN, UART)</span>
+                        <span class="skill-badge">Companion Computer Integration</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <strong>Perception & Mapping:</strong> ORB-SLAM3, OpenCV, Octomap Voxel, Gazebo Harmonic
+
+                <div class="skills-category">
+                    <span class="category-name">GNC & Autonomy</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">EKF3 Sensor Fusion</span>
+                        <span class="skill-badge">Offboard Path Planning (A*)</span>
+                        <span class="skill-badge">Waypoint Navigation</span>
+                        <span class="skill-badge">Swarm Coordination</span>
+                        <span class="skill-badge">GPS-Denied IR Triangulation</span>
+                        <span class="skill-badge">Geofencing</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <strong>Aerospace Design:</strong> OpenVSP CAD, PrePoMax FEA, OpenFOAM CFD, Pulsejet Prototypes
+
+                <div class="skills-category">
+                    <span class="category-name">Software, Tools & Analysis</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">PyTorch</span>
+                        <span class="skill-badge">TensorFlow Lite Micro</span>
+                        <span class="skill-badge">OpenVSP</span>
+                        <span class="skill-badge">OpenFOAM CFD</span>
+                        <span class="skill-badge">PrePoMax/CalculiX FEA</span>
+                        <span class="skill-badge">QGroundControl</span>
+                        <span class="skill-badge">Mission Planner</span>
+                    </div>
                 </div>
-                <div class="skill-group">
-                    <strong>Quality Inspections:</strong> NDT Level II Certification, Casting & Weld Auditing, PMI
+
+                <div class="skills-category">
+                    <span class="category-name">Regulations & Operations</span>
+                    <div class="badges-list">
+                        <span class="skill-badge">DGCA UAS Rules 2021</span>
+                        <span class="skill-badge">BVLOS Operations</span>
+                        <span class="skill-badge">Ground Control Station (GCS) Management</span>
+                        <span class="skill-badge">Flight Test Planning</span>
+                        <span class="skill-badge">SOPs & Safety Protocols</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- EXPERIENCE -->
-        <section>
-            <h2>Professional Experience</h2>
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
             
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div class="exp-role">UAV Systems & Flight Operations Engineer | <span class="exp-company">Novatech Robo Pvt Ltd</span></div>
-                    <div class="exp-date">Jun 2024 — Present</div>
+            <div class="card glass">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">UAV Systems Engineer</h3>
+                        <div class="card-subtitle">Novatech Robo Pvt. Ltd.</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="meta-item"><i class="icon">📍</i> Bengaluru, India</span>
+                        <span class="meta-item"><i class="icon">📅</i> Jun 2024 — Present</span>
+                    </div>
                 </div>
-                <ul>
-                    <li><strong>Industrial Operations:</strong> Commanded rigorous flight-testing, sensor calibration (IMUs, barometers, transceivers), and field deployments for a fleet of 20+ custom commercial and visual-mapping UAV platforms, achieving a 100% mission safety and aircraft recovery record.</li>
-                    <li><strong>Telemetry & Predictive Health:</strong> Engineered automated Python-based telemetry parsing pipelines to extract and audit real-time flight logs, analyzing IMU high-frequency vibrations, EKF3 residuals, and voltage transients to reduce structural vibration bounds by 25%.</li>
-                    <li><strong>Hardware-in-the-Loop Integration:</strong> Successfully assembled and wired custom ESP32-S3 control stacks, level-shifting electronics, and ducted mapping cameras, authoring strict pre-flight checklists and offboard ROS 2 path-planning behaviors.</li>
-                    <li><strong>Compliance & Safety Leadership:</strong> Authored and directed corporate operational SOPs, ensuring strict compliance with national civil aviation frameworks during industrial delivery flight trials.</li>
+                <ul class="bullet-list">
+                    <li>Commanded BVLOS flight test operations across a 20+ airframe fleet logging 120+ sorties with zero incidents executing pre-flight airworthiness checks, real-time telemetry monitoring, and structured post-flight debrief cycles in compliance with DGCA UAS Rules 2021.</li>
+                    <li>Authored corporate SOPs for a 5-pilot crew, standardizing pre-flight checklists, emergency response protocols, GCS configuration procedures, and bench-test validation logic; adopted as the baseline operating framework for all new airframe integrations.</li>
+                    <li>Built a Python telemetry diagnostic pipeline to parse ArduPilot .bin logs for IMU vibration peaks and EKF3 residuals; applied FFT-driven motor-mount isolation across 5 platforms, reducing structural vibration levels by 25% and extending drivetrain service intervals.</li>
+                    <li>Integrated custom ESP32-S3 autopilots with DSHOT ESC wiring and payload cameras; configured offboard ROS 2 (rclcpp) autonomous waypoint-sequencing and geofencing fail-safe behaviors, cutting pre-mission GCS setup time from ~45 min to ~30 min per sortie (33% reduction).</li>
+                    <li>Executed real-time GCS PID loop tuning to eliminate roll/pitch transients and optimize battery draw across multiple airframe configurations; delivered hands-on drone assembly and calibration workshops to 120+ engineers across 6 cohort groups.</li>
                 </ul>
             </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div class="exp-role">NDT & Inspection Engineer Intern | <span class="exp-company">Trinity NDT Engineers</span></div>
-                    <div class="exp-date">Feb 2023 — May 2023</div>
+            
+            <div class="card glass">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">NDT & Inspection Engineer (Intern)</h3>
+                        <div class="card-subtitle">Trinity NDT Engineers</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="meta-item"><i class="icon">📍</i> Bengaluru, India</span>
+                        <span class="meta-item"><i class="icon">📅</i> Feb 2023 — May 2023</span>
+                    </div>
                 </div>
-                <ul>
-                    <li><strong>Non-Destructive Testing (NDT):</strong> Conducted rigorous NDT audits across casting components, structural welding joints, and active pipelines.</li>
-                    <li><strong>Material Quality & PMI:</strong> Executed high-accuracy Positive Material Identification (PMI) scans to verify metallurgy and material composition integrity.</li>
-                    <li><strong>Standard Compliance:</strong> Verified assembly certifications for high-pressure industrial equipment, including air receiver tanks and structural frames.</li>
+                <ul class="bullet-list">
+                    <li>Performed Radiographic Testing (RT), UT, and Positive Material Identification (PMI) on 150+ aerospace propulsion components for GTRE (DRDO), ensuring airworthiness compliance and authoring inspection reports to AS/NAS quality standards.</li>
                 </ul>
             </div>
         </section>
 
-        <!-- PORTFOLIO PROJECTS -->
-        <section>
-            <h2>Flagship Engineering Portfolio</h2>
+        <section id="projects">
+            <h2 class="section-title">Project Experience</h2>
+            <div class="projects-grid">
+                
+                <div class="card glass project-card">
+                    <h3 class="card-title text-accent">AeroCore-S3 - Bare-Metal Custom Flight Controller</h3>
+                    <div class="tech-container">
+                        <span class="tech-pill">ESP32-S3</span>
+                        <span class="tech-pill">ArduPilot HAL</span>
+                        <span class="tech-pill">SPI / I2C Bus</span>
+                        <span class="tech-pill">EKF3 Fusion</span>
+                        <span class="tech-pill">PCB Design</span>
+                    </div>
+                    <p class="project-desc">Architected a full custom flight controller from schematic to airborne hardware: designed SPI bus topology for BMI270 IMU and BMP581 barometer at sub-10 MHz, resolving clock jitter and bus contention during firmware bringup. Wrote custom HAL interface mappings in ArduPilot for high-speed SPI sensor communication; validated EKF3 sensor fusion through a structured flight test matrix static hover (±1.2 m position hold), GPS-assisted loiter, and full autonomous waypoint execution confirming stable attitude estimation across all envelopes. Published complete flight logs, PCB schematics, and flight footage at github.com/yogesh031020/AeroCore-S3.</p>
+                </div>
+                
+                <div class="card glass project-card">
+                    <h3 class="card-title text-accent">Project TRINITY - Decentralized Swarm Coordination Engine</h3>
+                    <div class="tech-container">
+                        <span class="tech-pill">C++</span>
+                        <span class="tech-pill">ROS 2 Humble</span>
+                        <span class="tech-pill">Zenoh DDS</span>
+                        <span class="tech-pill">Raspberry Pi 4</span>
+                        <span class="tech-pill">Gazebo Harmonic</span>
+                    </div>
+                    <p class="project-desc">Developed a C++ boids algorithm swarm coordination library running inside isolated ROS 2 namespaces, enabling decentralized multi-agent path planning without a central broker or single point of failure. Integrated Eclipse Zenoh router for peer to peer telemetry synchronization, cutting active network overhead by 40% versus pure ROS 2 DDS validated by bandwidth and RTT profiling on Raspberry Pi 4 companion computers. Visualized real-time swarm state and collision avoidance boundaries in RViz2; full system validated in Gazebo Harmonic SITL before hardware integration.</p>
+                </div>
 
-            <div class="project-item">
-                <div class="project-title">AeroCore-S3 Custom Flight Controller <span>(Avionics, Porting & Flight Testing)</span></div>
-                <div class="project-desc">Designed and built a custom ESP32-S3 based flight controller from the hardware level. Ported ArduPilot's Hardware Abstraction Layer interface mappings for high-speed SPI sensor communication (BMI270 IMU, BMP581 Baro) and successfully validated EKF3 state estimation during manual and autonomous test flights (live video proof published).</div>
-            </div>
+                <div class="card glass project-card">
+                    <h3 class="card-title text-accent">Autonomous Warehouse Quadcopter v2 - GPS-Denied Autonomy</h3>
+                    <div class="tech-container">
+                        <span class="tech-pill">ESP32-S3</span>
+                        <span class="tech-pill">FreeRTOS Kernel</span>
+                        <span class="tech-pill">IR Triangulation</span>
+                        <span class="tech-pill">MAVLink telemetry</span>
+                        <span class="tech-pill">TFLite Micro</span>
+                    </div>
+                    <p class="project-desc">Deployed a dual-core FreeRTOS architecture on an ESP32-S3 companion computer: Core 0 handling A* pathfinding and IR triangulation; Core 1 managing MAVLink telemetry and ultrasonic obstacle avoidance achieving <40 ms full control loop latency. Implemented a 4-beacon TSOP38238 IR sensor array for dynamic spatial triangulation, achieving ±3cm docking precision for automated payload pickup in GPS-denied warehouse environments. Deployed a TensorFlow Lite Micro model onboard for human-obstacle classification, triggering MG90S servo safe-release failsafes on detection.</p>
+                </div>
 
-            <div class="project-item">
-                <div class="project-title">Project ICARUS: HALE Autonomy & Structural Co-Design <span>(OpenVSP, FEA, CFD & PyTorch)</span></div>
-                <div class="project-desc">Completed full design and stress boundary certification lifecycle for a 3.0m High-Altitude Long-Endurance (HALE) UAV. Conducted structural stress audits using PrePoMax/CalculiX FEA, simulated aerodynamic coefficients via OpenFOAM CFD, and trained a PyTorch neural geometry optimizer achieving an 11.9% lift efficiency gain.</div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">Project-TRINITY: Decentralized Swarm Engine <span>(C++, ROS 2, Zenoh & RViz)</span></div>
-                <div class="project-desc">Developed a lightweight C++ boids swarm coordination library running inside localized ROS 2 namespaces. Integrated Eclipse Zenoh router protocols for peer-to-peer telemetry state exchanges, cutting active network overhead by 40% compared to pure ROS 2 DDS.</div>
+                <div class="card glass project-card">
+                    <h3 class="card-title text-accent">Project ICARUS - HALE Airframe Design & CFD/FEA Optimization</h3>
+                    <div class="tech-container">
+                        <span class="tech-pill">OpenVSP</span>
+                        <span class="tech-pill">OpenFOAM CFD</span>
+                        <span class="tech-pill">PrePoMax FEA</span>
+                        <span class="tech-pill">CalculiX</span>
+                        <span class="tech-pill">PyTorch ML</span>
+                    </div>
+                    <p class="project-desc">Executed a closed-loop design iteration on a 3.0m High-Altitude Long-Endurance (HALE) UAV: aerodynamic shaping in OpenVSP, structural boundary certification in PrePoMax/CalculiX FEA, and low-speed regime validation via OpenFOAM CFD. Trained a PyTorch surrogate model on drag-weight trade surfaces across aspect ratio and spar geometry sweeps, achieving an 11.9% lift efficiency gain over the baseline all design decisions data-driven from CFD and FEA outputs.</p>
+                </div>
             </div>
         </section>
 
-        <!-- EDUCATION & ADDITIONAL INFO -->
-        <section>
-            <h2>Education & Credentials</h2>
-            <div class="edu-item">
-                <div class="edu-title">Bachelor of Engineering in Aeronautical Engineering</div>
-                <div class="exp-date">June 2023</div>
-            </div>
-            <div class="edu-desc">SJC Institute of Technology (VTU) | Aug 2019 — June 2023 | <i>Thesis Project: Prototype Design of a Valveless Pulsejet Engine</i></div>
-            
-            <div style="margin-top: 15px;" class="lang-cert-grid">
-                <div>🗣️ <strong>Languages:</strong> English, Hindi, Kannada, Tamil</div>
-                <div>🏆 <strong>Certifications:</strong> Professional Non-Destructive Testing (NDT) Level II Certification</div>
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="card glass">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">B.E. in Aeronautical Engineering</h3>
+                        <div class="card-subtitle">SJC Institute of Technology (VTU)</div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="meta-item"><i class="icon">📍</i> Chikkaballapura, India</span>
+                        <span class="meta-item"><i class="icon">📅</i> 2019 — 2023</span>
+                    </div>
+                </div>
+                <p class="edu-thesis"><strong>Final Year Project:</strong> Prototype Design & Analysis of a Valveless Pulsejet Engine - propulsion systems, combustion analysis, structural testing</p>
             </div>
         </section>
+
+        <div class="bottom-grid">
+            <section id="certifications" style="margin-bottom: 0;">
+                <h2 class="section-title">Training Focus</h2>
+                <div class="card glass bottom-card">
+                    <p class="cert-text">Professional Non-Destructive Testing (NDT) Level II Certification (UT, PT, RT) | Trinity NDT Engineers</p>
+                </div>
+            </section>
+
+            <section id="languages" style="margin-bottom: 0;">
+                <h2 class="section-title">Languages</h2>
+                <div class="card glass bottom-card">
+                    <p class="lang-text">English (Professional) • Hindi • Kannada • Tamil</p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="footer-logo">Yogesh E S</div>
+            <div class="footer-text">© 2026. Designed with visual excellence & systems-level safe calibration.</div>
+        </footer>
     </div>
 
 </body>
