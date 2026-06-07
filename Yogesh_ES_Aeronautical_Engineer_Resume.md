@@ -1,5 +1,5 @@
 # YOGESH E S
-### Aeronautical & Autonomy Systems Engineer
+### UAV Systems Engineer
 
 Email: yogeshes376@gmail.com | Phone: +91 78926 34405 | Bengaluru, India  
 LinkedIn: [linkedin.com/in/yogesh-e-s](https://linkedin.com/in/yogesh-e-s) | GitHub: [github.com/yogesh031020](https://github.com/yogesh031020) | Portfolio: [yogesh031020.github.io](https://yogesh031020.github.io)
@@ -7,7 +7,7 @@ LinkedIn: [linkedin.com/in/yogesh-e-s](https://linkedin.com/in/yogesh-e-s) | Git
 ---
 
 ## PROFESSIONAL SUMMARY
-Aeronautical & UAV Systems Engineer with end-to-end ownership of autonomous drone development from bare-metal ESP32-S3 autopilot PCB design and ArduPilot HAL integration to ROS 2 swarm middleware and BVLOS field operations. Designed, built, and flight-tested custom flight controllers with EKF3 sensor fusion; commanded operations across a 20+ airframe fleet through 120+ sorties under DGCA UAS Rules 2021. Seeking to bring this depth across the full stack from sensor integration to autonomous mission execution at a company building mission-critical UAV systems.
+UAV Systems Engineer with end-to-end ownership of autonomous drone development from bare-metal ESP32-S3 autopilot PCB design and ArduPilot HAL integration to ROS 2 swarm middleware and BVLOS field operations. Designed, built, and flight-tested custom flight controllers with EKF3 sensor fusion; commanded operations across a 20+ airframe fleet through 120+ sorties under DGCA UAS Rules 2021. Seeking to bring this depth across the full stack from sensor integration to autonomous mission execution at a company building mission-critical UAV systems.
 
 **Key Achievements:** 120+ BVLOS Sorties | 25% Vibration Reduction | 40% Network Overhead Cut | ±1.2 m Position Hold | 33% GCS Setup Time Reduction
 
