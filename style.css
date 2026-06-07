@@ -1300,3 +1300,299 @@ footer {
     }
 }
 
+/* ==========================================================================
+   Aeronautical Blueprint Theme Project Modal Overlay
+   ========================================================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    background: rgba(4, 12, 24, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content.blueprint-modal {
+    width: 92%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: rgba(10, 25, 45, 0.95);
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    box-shadow: 0 0 35px rgba(0, 210, 255, 0.25);
+    padding: 3rem;
+    position: relative;
+    transform: scale(0.95);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Add blueprint grid texture inside modal */
+    background-image: 
+        linear-gradient(to right, rgba(0, 210, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 210, 255, 0.02) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.modal.active .modal-content.blueprint-modal {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 1.8rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: rotate(90deg);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.modal-subtitle {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+}
+
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+}
+
+@media (max-width: 968px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.modal-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-container {
+    width: 100%;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border: 1.5px solid var(--border-light);
+    background: #040c18;
+    overflow: hidden;
+}
+
+.carousel-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #040c18;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+.carousel-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 1rem 1rem 4rem 1rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 0;
+    background: rgba(6, 17, 33, 0.85);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    transition: var(--transition);
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+    color: var(--bg-base);
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.carousel-prev {
+    left: 1rem;
+}
+
+.carousel-next {
+    right: 1rem;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 20;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--primary);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+    transform: scale(1.2);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(6, 17, 33, 0.9);
+    border-top: 1.5px solid var(--border-light);
+    color: var(--text-main);
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    text-align: center;
+    z-index: 15;
+}
+
+.modal-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.modal-right h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+    border-left: 3px solid var(--primary);
+    padding-left: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.modal-details p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.math-box {
+    background: rgba(4, 12, 24, 0.9);
+    border: 1.5px solid var(--border-light);
+    padding: 1.25rem;
+    max-height: 250px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.math-item {
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.math-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.math-item strong {
+    color: var(--primary);
+}
+
+.modal-actions {
+    margin-top: 1rem;
+}
+
+/* Custom interactive project card styling enhancements */
+.project-card.interactive-card {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.project-card.interactive-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.25);
+}
+

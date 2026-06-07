@@ -756,6 +756,218 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize HUD & Start loops
         updateTelemetryUI();
         drawWindTunnel();
+
+        // ==========================================================================
+        // 7. GNC & CFD MATLAB Projects Modal and Carousel Controller
+        // ==========================================================================
+        const projectData = {
+            lqr: {
+                title: "3D Quadcopter LQR Trajectory Simulator",
+                subtitle: "Project 1 • Guidance, Navigation, & Control",
+                tags: ["MATLAB", "LQR Control", "6-DOF Dynamics", "Actuator Saturation", "Trajectory Optimization"],
+                desc: "A high-fidelity MATLAB simulation and control engine for a nonlinear quadrotor, utilizing state-space design to achieve stable trajectory tracking under actuator saturation. The system solves the continuous Algebraic Riccati Equation to calculate an optimal 12-state feedback controller.",
+                math: [
+                    "<strong>State Vector:</strong> x = [x, y, z, φ, θ, ψ, u, v, w, p, q, r]ᵀ ∈ ℝ¹²",
+                    "<strong>Control Input:</strong> u = [f₁, f₂, f₃, f₄]ᵀ ∈ ℝ⁴ (Individual motor thrusts)",
+                    "<strong>LQR Cost Minimization:</strong> J = ∫₀^∞ (xᵀQx + uᵀRu) dt",
+                    "<strong>Rotor Thrust Constraints:</strong> f_i ∈ [0.05, 8.0] N"
+                ],
+                repo: "https://github.com/yogesh031020/drone-dynamics-lqr-simulator",
+                images: [
+                    { src: "assets/quadcopter_telemetry.png", caption: "Multi-Variable state tracking along climbing helical path showing roll/pitch attitude bounds." }
+                ]
+            },
+            ekf: {
+                title: "EKF Drone Sensor Fusion (AHRS)",
+                subtitle: "Project 2 • State Estimation & Attitude Filtering",
+                tags: ["MATLAB", "Extended Kalman Filter", "AHRS", "Sensor Fusion", "IMU Calibration", "MEMS Gyro Bias"],
+                desc: "An optimal attitude and heading reference system (AHRS) EKF that fuses high-frequency IMU and magnetometer data to estimate Euler angles and calibrate gyroscope biases. Corrected a critical Jacobian transpose error to resolve yaw divergence.",
+                math: [
+                    "<strong>State Vector:</strong> x = [φ, θ, ψ, b_p, b_q, b_r]ᵀ ∈ ℝ⁶",
+                    "<strong>Corrective Measurement Transpose Fix:</strong> R_y = [cos(θ), 0, -sin(θ); 0, 1, 0; sin(θ), 0, cos(θ)]",
+                    "<strong>Kalman Gain:</strong> K = P⁻ Hᵀ (H P⁻ Hᵀ + R)⁻¹",
+                    "<strong>Attitude Envelope:</strong> Errors bounded inside 3σ covariance limits (±1.0°)"
+                ],
+                repo: "https://github.com/yogesh031020/drone-sensor-fusion-ekf",
+                images: [
+                    { src: "assets/ekf_attitude_telemetry.png", caption: "Estimated attitude (blue dashed) tracking true state (black) vs raw gyro integration (red dot-dash) drifting over time." },
+                    { src: "assets/ekf_bias_telemetry.png", caption: "Three-axis gyroscope sensor bias thermal drift calibration, converging inside 6 seconds." },
+                    { src: "assets/ekf_error_bounds_telemetry.png", caption: "EKF estimation error bounded inside ±3σ covariance envelopes, verifying statistical consistency." }
+                ]
+            },
+            autopilot: {
+                title: "Fixed-Wing Aircraft Autopilot & Longitudinal SAS",
+                subtitle: "Project 3 • Stability Augmentation & Guidance Systems",
+                tags: ["MATLAB", "Stability Augmentation (SAS)", "Cascaded Loops", "PID Control", "Wind Gust Rejection", "State-Space Model"],
+                desc: "A multi-loop guidance, navigation, and control (GNC) architecture for a Navion passenger aircraft, incorporating a Longitudinal Stability Augmentation System (SAS) and autopilot loops for pitch hold (inner loop) and altitude select (outer loop). Demonstrates high-performance wind gust rejection.",
+                math: [
+                    "<strong>State Vector:</strong> x = [u, w, q, θ]ᵀ (u/w velocities, q pitch rate, θ attitude)",
+                    "<strong>SAS Gain Law:</strong> δ_e_SAS = -K_q * q",
+                    "<strong>Inner Attitude Loop:</strong> PID pitch hold control steering elevator deflection",
+                    "<strong>Outer Altitude Loop:</strong> PI altitude error tracker commanding pitch reference θ_c"
+                ],
+                repo: "https://github.com/yogesh031020/aircraft-autopilot-stability",
+                images: [
+                    { src: "assets/autopilot_climb_telemetry.png", caption: "Cascaded PI-PID tracking showing altitude and commanded pitch attitude during a 50m step climb." },
+                    { src: "assets/autopilot_gust_rejection_telemetry.png", caption: "Rejection of a sudden 5 m/s vertical wind gust disturbance, showing recovery within 4 seconds and minimal path deviation." }
+                ]
+            },
+            cfd: {
+                title: "2D Airfoil Vortex Panel CFD Solver",
+                subtitle: "Project 4 • Aerodynamics & Numerical Analysis",
+                tags: ["MATLAB", "Linear-Strength Vortex Panel Method", "CFD", "Potential Flow", "NACA Airfoils", "Kutta Condition", "Boundary Elements"],
+                desc: "An aerodynamic boundary element method (BEM) solver implementing the Linear-Strength Vortex Panel Method (VPM) to compute surface pressure distributions, lift, and pitching moments. Derived the clockwise-positive analytical influence integrations to correct previous sign errors and achieve a precise 2π lift curve slope.",
+                math: [
+                    "<strong>Vortex Distribution:</strong> γ(s) = γ_j (1 - s/S_j) + γ_j₊₁ (s/S_j)",
+                    "<strong>Kutta Condition:</strong> γ₁ + γ_N₊₁ = 0 (Vanishing tail sheet strength)",
+                    "<strong>Local Tangential Velocity:</strong> V_t_i = V_inf * cos(θ_i - α) + ∑ (C_t1 * γ_j + C_t2 * γ_j₊₁)",
+                    "<strong>Self-Influence bounds:</strong> u'_ii = -0.25 (Average tangential jump limit)"
+                ],
+                repo: "https://github.com/yogesh031020/airfoil-vortex-panel-matlab",
+                images: [
+                    { src: "assets/airfoil_lift_curve.png", caption: "Lift coefficient (Cl) vs alpha sweep, showing perfect alignment with Thin Airfoil Theory slopes for symmetric and cambered airfoils." },
+                    { src: "assets/airfoil_pressure_distribution.png", caption: "Chordwise pressure coefficient (Cp) distribution at alpha = 4 degrees showing upper suction loop and lower pressure side." },
+                    { src: "assets/airfoil_moment_curve.png", caption: "Pitching moment coefficient (Cm) about quarter-chord, showing stable NACA 0012 (0.0) and cambered NACA 2412 (-0.05) behaviors." },
+                    { src: "assets/airfoil_paneling_normals.png", caption: "NACA 2412 airfoil boundary panel discretization showing control points and outward-pointing normal vectors (N = 80)." }
+                ]
+            }
+        };
+
+        // Modal Control State
+        let activeCarousel = null;
+
+        const modal = document.getElementById("project-modal");
+        const closeBtn = document.getElementById("modal-close-btn");
+
+        function openProjectModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            // Populate text data
+            document.getElementById("modal-title").innerText = data.title;
+            document.getElementById("modal-subtitle").innerText = data.subtitle;
+            document.getElementById("modal-desc").innerText = data.desc;
+            document.getElementById("modal-repo-link").href = data.repo;
+
+            // Populate math equations
+            const mathContainer = document.getElementById("modal-math");
+            mathContainer.innerHTML = "";
+            data.math.forEach(eq => {
+                const item = document.createElement("div");
+                item.className = "math-item";
+                item.innerHTML = eq;
+                mathContainer.appendChild(item);
+            });
+
+            // Initialize Carousel slides & dots
+            const track = document.getElementById("carousel-track");
+            const dots = document.getElementById("carousel-dots");
+            track.innerHTML = "";
+            dots.innerHTML = "";
+
+            data.images.forEach((imgData, index) => {
+                // Slide
+                const slide = document.createElement("div");
+                slide.className = `carousel-slide ${index === 0 ? "active" : ""}`;
+                
+                const img = document.createElement("img");
+                img.src = imgData.src;
+                img.alt = imgData.caption;
+
+                const caption = document.createElement("div");
+                caption.className = "carousel-caption";
+                caption.innerText = imgData.caption;
+
+                slide.appendChild(img);
+                slide.appendChild(caption);
+                track.appendChild(slide);
+
+                // Dot
+                const dot = document.createElement("div");
+                dot.className = `carousel-dot ${index === 0 ? "active" : ""}`;
+                dot.addEventListener("click", () => goToSlide(index));
+                dots.appendChild(dot);
+            });
+
+            // Track state
+            activeCarousel = {
+                currentIndex: 0,
+                totalSlides: data.images.length
+            };
+
+            // Navigation toggles
+            const prevBtn = document.querySelector(".carousel-prev");
+            const nextBtn = document.querySelector(".carousel-next");
+            if (data.images.length <= 1) {
+                prevBtn.style.display = "none";
+                nextBtn.style.display = "none";
+                dots.style.display = "none";
+            } else {
+                prevBtn.style.display = "flex";
+                nextBtn.style.display = "flex";
+                dots.style.display = "flex";
+            }
+
+            // Show Modal
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden"; // disable body scroll
+        }
+
+        function closeProjectModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = ""; // re-enable body scroll
+            activeCarousel = null;
+        }
+
+        function goToSlide(index) {
+            if (!activeCarousel) return;
+
+            const slides = document.querySelectorAll(".carousel-slide");
+            const dots = document.querySelectorAll(".carousel-dot");
+
+            slides[activeCarousel.currentIndex].classList.remove("active");
+            dots[activeCarousel.currentIndex].classList.remove("active");
+
+            activeCarousel.currentIndex = index;
+
+            slides[activeCarousel.currentIndex].classList.add("active");
+            dots[activeCarousel.currentIndex].classList.add("active");
+        }
+
+        // Carousel buttons listeners
+        document.querySelector(".carousel-prev").addEventListener("click", () => {
+            if (!activeCarousel) return;
+            let nextIdx = activeCarousel.currentIndex - 1;
+            if (nextIdx < 0) nextIdx = activeCarousel.totalSlides - 1;
+            goToSlide(nextIdx);
+        });
+
+        document.querySelector(".carousel-next").addEventListener("click", () => {
+            if (!activeCarousel) return;
+            let nextIdx = activeCarousel.currentIndex + 1;
+            if (nextIdx >= activeCarousel.totalSlides) nextIdx = 0;
+            goToSlide(nextIdx);
+        });
+
+        // Close listeners
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeProjectModal);
+        }
+        
+        modal.addEventListener("click", (e) => {
+            if (e.target.id === "project-modal") {
+                closeProjectModal();
+            }
+        });
+
+        // Bind all interactive cards click events
+        document.querySelectorAll(".project-card[data-project]").forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.preventDefault();
+                const projId = card.getAttribute("data-project");
+                openProjectModal(projId);
+            });
+        });
     }
 });
 
