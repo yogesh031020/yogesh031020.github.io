@@ -1596,3 +1596,309 @@ footer {
     box-shadow: 0 0 25px rgba(0, 210, 255, 0.25);
 }
 
+/* ==========================================================================
+   Hero GNC Drone Flight Deck Simulator Styles
+   ========================================================================== */
+.hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    perspective: 1000px; /* Essential for 3D tilts */
+}
+
+.drone-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out; /* Smooth tilt transitions */
+}
+
+/* Float state managed via JS or fallback class */
+.drone-container.auto-float {
+    animation: float 5s ease-in-out infinite;
+}
+
+.drone-hud-controls {
+    width: 100%;
+    max-width: 440px;
+    padding: 18px 22px !important;
+    background: rgba(10, 25, 45, 0.8) !important;
+    border: 1px solid var(--border-light) !important;
+    border-radius: 4px !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
+    margin-top: 10px;
+    z-index: 5;
+}
+
+.hud-header-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed rgba(0, 210, 255, 0.15);
+    padding-bottom: 8px;
+}
+
+.mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(0, 210, 255, 0.5);
+    letter-spacing: 1.5px;
+}
+
+.hud-mode-badge {
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.hud-mode-badge.manual-mode {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255, 71, 87, 0.08);
+}
+
+.hud-telemetry-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.telemetry-box {
+    background: rgba(4, 12, 24, 0.7);
+    border: 1px solid var(--border-light);
+    border-radius: 2px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tel-label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+
+.tel-value {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.hud-sliders-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.slider-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.slider-info span {
+    font-family: var(--font-mono);
+    color: var(--primary);
+}
+
+/* Custom GNC slider styling matching blueprint theme */
+.hud-sliders-deck input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: rgba(0, 210, 255, 0.15);
+    outline: none;
+    border: none;
+}
+
+.hud-sliders-deck input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--primary);
+    border: 1.5px solid var(--bg-base);
+    cursor: pointer;
+    box-shadow: 0 0 8px var(--primary);
+}
+
+.hud-sliders-deck input[type="range"]:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.hud-sliders-deck input[type="range"]:disabled::-webkit-slider-thumb {
+    background: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.hud-toggle-btn {
+    width: 100%;
+    font-family: var(--font-heading);
+    font-size: 0.72rem !important;
+    letter-spacing: 1.5px;
+    padding: 10px 15px !important;
+    border-radius: 2px !important;
+    text-transform: uppercase;
+}
+
+.hud-toggle-btn.active-manual {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.4) !important;
+}
+
+/* Multi-Frame Selector & Telemetry spec deck styling */
+.drone-frame-group {
+    display: none;
+}
+.drone-frame-group.active {
+    display: block;
+}
+
+/* Propeller speed variations */
+.propeller-spin-fast {
+    animation: spin 0.05s linear infinite;
+    transform-origin: 0px 0px;
+}
+.propeller-spin-slow {
+    animation: spin 0.25s linear infinite;
+    transform-origin: 0px 0px;
+}
+
+/* HUD Frame Selector */
+.hud-frame-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(0, 210, 255, 0.15);
+}
+
+.selector-title {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+.frame-options {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.frame-opt-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    color: rgba(0, 210, 255, 0.6);
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+.frame-opt-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(0, 210, 255, 0.05);
+}
+
+.frame-opt-btn.active {
+    border-color: var(--primary);
+    color: #fff;
+    background: rgba(0, 210, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    text-shadow: 0 0 4px var(--primary);
+}
+
+/* Spec Matrix */
+.hud-spec-matrix {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(4, 12, 24, 0.4);
+    border: 1px solid var(--border-light);
+    padding: 6px 12px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+}
+
+.spec-item {
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.spec-item strong {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    margin-left: 2px;
+}
+
+/* Radar scanning line effect */
+.hud-scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    box-shadow: 0 0 15px var(--primary);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.hud-scanning-line.scanning {
+    animation: radar-sweep 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    opacity: 0.8;
+}
+
+@keyframes radar-sweep {
+    0% {
+        top: 10%;
+    }
+    100% {
+        top: 90%;
+    }
+}
+
+

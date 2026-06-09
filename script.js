@@ -968,6 +968,219 @@ document.addEventListener('DOMContentLoaded', () => {
                 openProjectModal(projId);
             });
         });
+
+        // ==========================================================================
+        // 8. Interactive GNC Drone Simulator Dashboard Logic
+        // ==========================================================================
+        const droneContainer = document.getElementById('hero-drone-container');
+        const modeBadge = document.getElementById('hud-mode');
+        const modeToggleBtn = document.getElementById('hud-mode-toggle');
+        
+        const rollSlider = document.getElementById('roll-control');
+        const pitchSlider = document.getElementById('pitch-control');
+        const yawSlider = document.getElementById('yaw-control');
+        
+        const rollLabel = document.getElementById('roll-val-label');
+        const pitchLabel = document.getElementById('pitch-val-label');
+        const yawLabel = document.getElementById('yaw-val-label');
+        
+        const telRoll = document.getElementById('tel-roll');
+        const telPitch = document.getElementById('tel-pitch');
+        const telYaw = document.getElementById('tel-yaw');
+
+        const frameButtons = document.querySelectorAll('.frame-opt-btn');
+        const droneFrames = document.querySelectorAll('.drone-frame-group');
+        const scanner = document.getElementById('hud-scanner');
+        
+        const specLayout = document.getElementById('spec-layout');
+        const specMass = document.getElementById('spec-mass');
+        const specTw = document.getElementById('spec-tw');
+        
+        const uavSpecs = {
+            quadx: { layout: "QUAD X", mass: "1.42 kg", twr: "2.4:1", rollBound: 30, pitchBound: 30 },
+            fpv: { layout: "FPV DEADCAT", mass: "0.78 kg", twr: "8.5:1", rollBound: 45, pitchBound: 45 },
+            hexa: { layout: "HEXA X", mass: "7.95 kg", twr: "1.8:1", rollBound: 20, pitchBound: 20 }
+        };
+
+        let currentUav = "quadx";
+        
+        let simState = {
+            isManual: false,
+            roll: 0,
+            pitch: 0,
+            yaw: 0,
+            noiseTime: 0
+        };
+        
+        // Auto-hover noise simulation variables
+        let noiseInterval = null;
+        
+        function updateDroneTransform() {
+            if (simState.isManual) {
+                droneContainer.style.transform = `rotateX(${simState.pitch}deg) rotateY(${simState.roll}deg) rotateZ(${simState.yaw}deg)`;
+            } else {
+                // Auto hover slight stabilization corrections representation
+                const mult = currentUav === "fpv" ? 1.5 : (currentUav === "hexa" ? 0.6 : 1.0);
+                const rN = Math.sin(simState.noiseTime * 1.5) * 1.8 * mult;
+                const pN = Math.cos(simState.noiseTime * 1.2) * 1.4 * mult;
+                const yN = Math.sin(simState.noiseTime * 0.4) * 3.0 * (currentUav === "fpv" ? 2.0 : 0.8);
+                
+                droneContainer.style.transform = `rotateX(${pN}deg) rotateY(${rN}deg) rotateZ(${yN}deg)`;
+                
+                // Update digital telemetry readouts dynamically with noise representation
+                telRoll.textContent = `${rN.toFixed(1)}°`;
+                telPitch.textContent = `${pN.toFixed(1)}°`;
+                telYaw.textContent = `${yN.toFixed(1)}°`;
+                
+                simState.noiseTime += 0.05;
+            }
+        }
+        
+        // Run auto hover telemetry loop
+        function startAutoTelemetryLoop() {
+            noiseInterval = setInterval(() => {
+                if (!simState.isManual) {
+                    updateDroneTransform();
+                }
+            }, 50);
+        }
+        
+        startAutoTelemetryLoop();
+        
+        // Handle UAV selector button clicks
+        frameButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('active')) return;
+                
+                const nextFrame = btn.getAttribute('data-frame');
+                
+                // Trigger Radar Scan Animation
+                scanner.classList.add('scanning');
+                
+                // Disable selector buttons during scan
+                frameButtons.forEach(b => b.disabled = true);
+                
+                setTimeout(() => {
+                    scanner.classList.remove('scanning');
+                    frameButtons.forEach(b => b.disabled = false);
+                }, 800);
+                
+                // Switch Active Classes
+                frameButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                droneFrames.forEach(frame => {
+                    frame.classList.remove('active');
+                    if (frame.getAttribute('id') === `frame-${nextFrame}`) {
+                        frame.classList.add('active');
+                    }
+                });
+                
+                // Update Specs
+                currentUav = nextFrame;
+                const spec = uavSpecs[nextFrame];
+                specLayout.textContent = spec.layout;
+                specMass.textContent = spec.mass;
+                specTw.textContent = spec.twr;
+                
+                // Update slider limits based on UAV specs
+                rollSlider.min = -spec.rollBound;
+                rollSlider.max = spec.rollBound;
+                pitchSlider.min = -spec.pitchBound;
+                pitchSlider.max = spec.pitchBound;
+                
+                // Reset manual controls to 0 on swap
+                resetManualControls();
+            });
+        });
+        
+        function resetManualControls() {
+            simState.roll = 0;
+            simState.pitch = 0;
+            simState.yaw = 0;
+            
+            rollSlider.value = 0;
+            pitchSlider.value = 0;
+            yawSlider.value = 0;
+            
+            rollLabel.textContent = '0°';
+            pitchLabel.textContent = '0°';
+            yawLabel.textContent = '0°';
+            
+            if (simState.isManual) {
+                telRoll.textContent = '0.0°';
+                telPitch.textContent = '0.0°';
+                telYaw.textContent = '0.0°';
+                updateDroneTransform();
+            }
+        }
+
+        modeToggleBtn.addEventListener('click', () => {
+            simState.isManual = !simState.isManual;
+            
+            if (simState.isManual) {
+                // Switch to Manual
+                droneContainer.classList.remove('auto-float');
+                modeBadge.textContent = 'MANUAL GNC';
+                modeBadge.classList.add('manual-mode');
+                modeToggleBtn.innerHTML = `<i class="fa-solid fa-satellite"></i> RESET AUTONOMOUS HOVER`;
+                modeToggleBtn.classList.add('active-manual');
+                
+                // Enable sliders
+                rollSlider.disabled = false;
+                pitchSlider.disabled = false;
+                yawSlider.disabled = false;
+                
+                // Set initial slider values
+                simState.roll = parseInt(rollSlider.value);
+                simState.pitch = parseInt(pitchSlider.value);
+                simState.yaw = parseInt(yawSlider.value);
+                
+                // Set dynamic labels
+                telRoll.textContent = `${simState.roll.toFixed(1)}°`;
+                telPitch.textContent = `${simState.pitch.toFixed(1)}°`;
+                telYaw.textContent = `${simState.yaw.toFixed(1)}°`;
+                
+                updateDroneTransform();
+            } else {
+                // Return to Auto
+                droneContainer.classList.add('auto-float');
+                modeBadge.textContent = 'AUTO HOVER';
+                modeBadge.classList.remove('manual-mode');
+                modeToggleBtn.innerHTML = `<i class="fa-solid fa-gamepad"></i> INITIALIZE MANUAL GNC OVERRIDE`;
+                modeToggleBtn.classList.remove('active-manual');
+                
+                // Reset sliders to 0
+                resetManualControls();
+                
+                // Disable sliders
+                rollSlider.disabled = true;
+                pitchSlider.disabled = true;
+                yawSlider.disabled = true;
+            }
+        });
+        
+        // Add listeners for manual controller adjustments
+        rollSlider.addEventListener('input', (e) => {
+            simState.roll = parseInt(e.target.value);
+            rollLabel.textContent = `${simState.roll}°`;
+            telRoll.textContent = `${simState.roll.toFixed(1)}°`;
+            updateDroneTransform();
+        });
+        
+        pitchSlider.addEventListener('input', (e) => {
+            simState.pitch = parseInt(e.target.value);
+            pitchLabel.textContent = `${simState.pitch}°`;
+            telPitch.textContent = `${simState.pitch.toFixed(1)}°`;
+            updateDroneTransform();
+        });
+        
+        yawSlider.addEventListener('input', (e) => {
+            simState.yaw = parseInt(e.target.value);
+            yawLabel.textContent = `${simState.yaw}°`;
+            telYaw.textContent = `${simState.yaw.toFixed(1)}°`;
+            updateDroneTransform();
+        });
     }
 });
 
